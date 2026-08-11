@@ -1,0 +1,910 @@
+<title>Assessoria pessoal com agentes — especificação técnica</title>
+
+<style>
+  /* ─────────────── tokens: tema claro (padrão) ─────────────── */
+  :root {
+    --ground:      #EEF1F0;
+    --surface:     #FBFCFB;
+    --surface-2:   #E4E9E7;
+    --ink:         #101918;
+    --ink-soft:    #55625F;
+    --ink-faint:   #8B9793;
+    --rule:        #CFD7D4;
+    --rule-soft:   #E0E6E4;
+    --accent:      #0E5B55;
+    --accent-soft: #D8E7E4;
+    --neg:         #9C2F26;
+    --neg-soft:    #F0DDDA;
+    --warn:        #8A5A10;
+    --warn-soft:   #F2E6CE;
+    --shadow:      0 1px 2px rgba(16,25,24,.06), 0 8px 24px -16px rgba(16,25,24,.28);
+
+    --f-display: Georgia, "Iowan Old Style", "Source Serif Pro", "Times New Roman", serif;
+    --f-body:    system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --f-mono:    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #0C1211;
+      --surface:     #141D1B;
+      --surface-2:   #1D2725;
+      --ink:         #E7EDEB;
+      --ink-soft:    #97A5A1;
+      --ink-faint:   #6B7A76;
+      --rule:        #27332F;
+      --rule-soft:   #1C2624;
+      --accent:      #62C9B8;
+      --accent-soft: #17332F;
+      --neg:         #E08A7E;
+      --neg-soft:    #33201D;
+      --warn:        #D8AC63;
+      --warn-soft:   #2C2517;
+      --shadow:      0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #0C1211;
+    --surface:     #141D1B;
+    --surface-2:   #1D2725;
+    --ink:         #E7EDEB;
+    --ink-soft:    #97A5A1;
+    --ink-faint:   #6B7A76;
+    --rule:        #27332F;
+    --rule-soft:   #1C2624;
+    --accent:      #62C9B8;
+    --accent-soft: #17332F;
+    --neg:         #E08A7E;
+    --neg-soft:    #33201D;
+    --warn:        #D8AC63;
+    --warn-soft:   #2C2517;
+    --shadow:      0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+
+  /* ─────────────── base ─────────────── */
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px 96px; }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px;
+  }
+
+  code, .mono { font-family: var(--f-mono); font-size: .86em; }
+  code { background: var(--surface-2); padding: .1em .34em; border-radius: 3px; }
+
+  .lbl {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ─────────────── cabeçalho ─────────────── */
+  .head {
+    border-bottom: 1px solid var(--rule);
+    padding: 60px 0 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .head h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 5.2vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -.018em;
+    text-wrap: balance;
+    max-width: 20ch;
+  }
+  .head .sub {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    padding-top: 6px;
+  }
+  .meta div { display: flex; flex-direction: column; gap: 2px; }
+  .meta .v { font-family: var(--f-mono); font-size: 13px; color: var(--ink); }
+
+  /* ─────────────── índice ─────────────── */
+  .toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .toc a {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 13px 14px 13px 0;
+    border-top: 1px solid var(--rule-soft);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14.5px;
+  }
+  .toc a:hover { color: var(--accent); }
+  .toc a span { font-family: var(--f-mono); font-size: 11px; color: var(--ink-faint); }
+
+  /* ─────────────── seções: numeração na margem ─────────────── */
+  section {
+    display: grid;
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 0 30px;
+    padding: 56px 0 8px;
+    border-top: 1px solid var(--rule);
+  }
+  section:first-of-type { border-top: none; }
+  .num {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: .06em;
+    padding-top: 12px;
+  }
+  .body-col { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(25px, 3.2vw, 32px);
+    line-height: 1.2;
+    letter-spacing: -.012em;
+    text-wrap: balance;
+  }
+  h3 {
+    font-family: var(--f-body);
+    font-weight: 620;
+    font-size: 16px;
+    letter-spacing: -.005em;
+  }
+  p { max-width: 68ch; }
+  .body-col > p + p { margin-top: -8px; }
+
+  /* ─────────────── princípios ─────────────── */
+  .princ { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .princ > div { background: var(--surface); padding: 22px; display: flex; flex-direction: column; gap: 9px; }
+  .princ strong { font-family: var(--f-display); font-size: 19px; font-weight: 400; }
+  .princ p { font-size: 15px; color: var(--ink-soft); max-width: none; }
+
+  /* ─────────────── diagrama ─────────────── */
+  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .canvas {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 18px;
+    overflow-x: auto;
+  }
+  .canvas svg { display: block; min-width: 660px; width: 100%; height: auto; }
+  figcaption { font-size: 13.5px; color: var(--ink-faint); }
+
+  .d-box   { fill: var(--surface); stroke: var(--rule); stroke-width: 1; }
+  .d-box-a { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1; }
+  .d-line  { stroke: var(--rule); stroke-width: 1.25; fill: none; }
+  .d-dash  { stroke: var(--rule); stroke-width: 1.25; fill: none; stroke-dasharray: 4 4; }
+  .d-t     { fill: var(--ink); font-family: var(--f-body); font-size: 13px; }
+  .d-t-s   { fill: var(--ink-soft); font-family: var(--f-body); font-size: 11.5px; }
+  .d-t-l   { fill: var(--ink-faint); font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .12em; }
+  .d-t-a   { fill: var(--accent); font-family: var(--f-body); font-size: 13px; font-weight: 600; }
+
+  /* ─────────────── tabelas ─────────────── */
+  .tw { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+  th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+  th {
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--ink-faint); font-weight: 400;
+    border-bottom: 1px solid var(--rule); white-space: nowrap;
+  }
+  tr:last-child td { border-bottom: none; }
+  td.n { font-family: var(--f-mono); font-size: 13px; color: var(--accent); white-space: nowrap; }
+  td.mono { font-family: var(--f-mono); font-size: 12.5px; }
+  .tnum { font-variant-numeric: tabular-nums; text-align: right; }
+
+  /* ─────────────── grades de cartões ─────────────── */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .grid > article { background: var(--surface); padding: 18px 20px; display: flex; flex-direction: column; gap: 7px; }
+  .grid h3 { display: flex; align-items: baseline; gap: 9px; }
+  .grid h3 em { font-family: var(--f-mono); font-style: normal; font-size: 11px; color: var(--ink-faint); }
+  .grid p { font-size: 14.5px; color: var(--ink-soft); max-width: none; }
+
+  /* ─────────────── blocos de código ─────────────── */
+  pre {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--accent);
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-family: var(--f-mono);
+    font-size: 12.5px;
+    line-height: 1.62;
+    color: var(--ink);
+    tab-size: 2;
+  }
+  pre .c { color: var(--ink-faint); }
+  pre .k { color: var(--accent); }
+
+  /* ─────────────── avisos ─────────────── */
+  .note {
+    display: flex; gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 16px 18px;
+  }
+  .note.crit { border-left-color: var(--neg); background: var(--neg-soft); }
+  .note.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+  .note p { font-size: 14.5px; max-width: none; }
+  .note .lbl { white-space: nowrap; padding-top: 4px; }
+  .note.crit .lbl { color: var(--neg); }
+  .note.warn .lbl { color: var(--warn); }
+
+  /* ─────────────── listas ─────────────── */
+  ul.plain { list-style: none; display: flex; flex-direction: column; gap: 9px; max-width: 68ch; }
+  ul.plain li { display: flex; gap: 12px; font-size: 15px; }
+  ul.plain li::before {
+    content: "—"; color: var(--accent); font-family: var(--f-mono); flex: none;
+  }
+
+  /* ─────────────── selos de fase ─────────────── */
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 2px;
+    border: 1px solid currentColor; white-space: nowrap;
+  }
+  .pill.now  { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+  .pill.next { color: var(--ink-faint); }
+
+  /* ─────────────── rodapé ─────────────── */
+  .foot {
+    border-top: 1px solid var(--rule);
+    margin-top: 56px; padding-top: 26px;
+    display: flex; flex-wrap: wrap; gap: 18px 40px; justify-content: space-between;
+    font-size: 13.5px; color: var(--ink-faint);
+  }
+
+  @media (max-width: 720px) {
+    section { grid-template-columns: 1fr; gap: 0; padding-top: 42px; }
+    .num { padding-top: 0; padding-bottom: 10px; }
+    .wrap { padding: 0 18px 72px; }
+    body { font-size: 16px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="head">
+    <div class="lbl">Especificação técnica · pt-BR · agosto de 2026</div>
+    <h1>Uma assessoria pessoal operada por agentes</h1>
+    <p class="sub">
+      Finanças, agenda, tarefas e organização em um painel web e em uma equipe de
+      quatro agentes de IA. O documento abaixo é o contrato que precede o código:
+      schema, motores determinísticos, API, comportamento dos agentes e critérios
+      de aceite por fase.
+    </p>
+    <div class="meta">
+      <div><span class="lbl">Repositório</span><span class="v">Adriano2/meuassesorF.I</span></div>
+      <div><span class="lbl">Estado</span><span class="v">documentação — sem código ainda</span></div>
+      <div><span class="lbl">Próxima etapa</span><span class="v">Fase 1 · fundação</span></div>
+      <div><span class="lbl">Fonte</span><span class="v">docs/ESPEC.md · 1.380 linhas</span></div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Índice">
+    <a href="#principios"><span>01</span>Princípios</a>
+    <a href="#arquitetura"><span>02</span>Arquitetura</a>
+    <a href="#dados"><span>03</span>Modelo de dados</a>
+    <a href="#motores"><span>04</span>Motores determinísticos</a>
+    <a href="#api"><span>05</span>Contrato de API</a>
+    <a href="#agentes"><span>06</span>Camada de agentes</a>
+    <a href="#aceite"><span>07</span>Suíte de aceite</a>
+    <a href="#nlg"><span>08</span>Motor de frases</a>
+    <a href="#roadmap"><span>09</span>Roadmap</a>
+  </nav>
+
+  <!-- ══════════ 01 ══════════ -->
+  <section id="principios">
+    <div class="num">§ 01</div>
+    <div class="body-col">
+      <h2>Dois princípios governam todas as decisões</h2>
+      <p>
+        Tudo o que vem depois — schema, camadas, prompts, o desenho dos cards —
+        é consequência destas duas regras. Quando uma decisão de implementação
+        ficar em aberto, ela se resolve olhando para cá.
+      </p>
+
+      <div class="princ">
+        <div>
+          <strong>O agente não tem privilégio</strong>
+          <p>
+            Ele é mais um cliente da API interna, com as mesmas validações, os
+            mesmos limites de permissão e a mesma trilha de auditoria da
+            interface web. Nunca recebe acesso a banco, ORM ou service. Toda
+            escrita feita por agente passa por um registro de operação
+            reversível — é isso que sustenta o “Desfazer” com uma única
+            abstração.
+          </p>
+        </div>
+        <div>
+          <strong>Cálculo é determinístico, linguagem é probabilística</strong>
+          <p>
+            Nenhum número exibido ao usuário passa por um LLM. Somar, projetar,
+            detectar recorrência e categorizar por regra são SQL e Python. O
+            modelo interpreta intenção, extrai entidades de mídia e escolhe
+            ferramenta — só isso. Se uma tarefa parecer exigir que o LLM
+            calcule, falta um motor determinístico.
+          </p>
+        </div>
+      </div>
+
+      <div class="note">
+        <span class="lbl">Por quê</span>
+        <p>
+          É o que faz o painel carregar instantâneo, os valores serem auditáveis
+          e o custo por usuário não escalar com o uso. O produto de referência
+          analisado faz exatamente isso: categorização por palavra-chave
+          cadastrada pelo usuário, detecção de padrões por estatística sobre a
+          série temporal, e frases de insight geradas por template no servidor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 02 ══════════ -->
+  <section id="arquitetura">
+    <div class="num">§ 02</div>
+    <div class="body-col">
+      <h2>Arquitetura</h2>
+      <p>
+        O orquestrador classifica a intenção e despacha para um especialista. O
+        especialista chama ferramentas, que são wrappers finos sobre a mesma API
+        que o painel consome. Nada contorna essa camada.
+      </p>
+
+      <figure>
+        <div class="canvas">
+          <svg viewBox="0 0 880 566" role="img" aria-label="Diagrama de arquitetura: canais alimentam o orquestrador, que roteia para três agentes especialistas; todos escrevem pela mesma API interna, que fala com Postgres, motores determinísticos e workers.">
+
+            <!-- canais -->
+            <rect class="d-box" x="180" y="16" width="520" height="66" rx="2"/>
+            <text class="d-t-l" x="196" y="36">CANAIS</text>
+            <text class="d-t" x="196" y="60">Chat no painel · SSE</text>
+            <text class="d-t-s" x="372" y="60">WhatsApp Cloud API · fase 6</text>
+            <text class="d-t-s" x="574" y="60">Web push · e-mail</text>
+
+            <path class="d-line" d="M440 82 L440 122"/>
+            <path class="d-line" d="M434 114 L440 122 L446 114"/>
+
+            <!-- orquestrador -->
+            <rect class="d-box-a" x="264" y="122" width="352" height="64" rx="2"/>
+            <text class="d-t-a" x="284" y="150">Orquestrador · Theo</text>
+            <text class="d-t-s" x="284" y="170">classificação de intenção + resolução de contexto</text>
+
+            <!-- barramento p/ especialistas -->
+            <path class="d-line" d="M440 186 L440 212 M150 212 L730 212 M150 212 L150 238 M440 212 L440 238 M730 212 L730 238"/>
+            <path class="d-line" d="M144 230 L150 238 L156 230 M434 230 L440 238 L446 230 M724 230 L730 238 L736 230"/>
+
+            <!-- especialistas -->
+            <rect class="d-box" x="50" y="238" width="200" height="70" rx="2"/>
+            <text class="d-t" x="68" y="264">Martin</text>
+            <text class="d-t-s" x="68" y="284">finanças</text>
+            <text class="d-t-l" x="68" y="300">12 FERRAMENTAS</text>
+
+            <rect class="d-box" x="340" y="238" width="200" height="70" rx="2"/>
+            <text class="d-t" x="358" y="264">Sofi</text>
+            <text class="d-t-s" x="358" y="284">agenda</text>
+            <text class="d-t-l" x="358" y="300">6 FERRAMENTAS</text>
+
+            <rect class="d-box" x="630" y="238" width="200" height="70" rx="2"/>
+            <text class="d-t" x="648" y="264">Luna</text>
+            <text class="d-t-s" x="648" y="284">tarefas · notas · arquivos</text>
+            <text class="d-t-l" x="648" y="300">6 FERRAMENTAS</text>
+
+            <!-- barramento p/ API -->
+            <path class="d-line" d="M150 308 L150 332 M440 308 L440 332 M730 308 L730 332 M150 332 L730 332 M440 332 L440 360"/>
+            <path class="d-line" d="M434 352 L440 360 L446 352"/>
+
+            <!-- interface web como cliente irmão -->
+            <rect class="d-box" x="20" y="360" width="182" height="64" rx="2"/>
+            <text class="d-t" x="38" y="386">Interface web</text>
+            <text class="d-t-s" x="38" y="406">CRUD · mesmos endpoints</text>
+            <path class="d-dash" d="M202 392 L246 392"/>
+
+            <!-- API -->
+            <rect class="d-box-a" x="246" y="360" width="388" height="64" rx="2"/>
+            <text class="d-t-a" x="266" y="386">API interna · FastAPI</text>
+            <text class="d-t-s" x="266" y="406">validação · permissão · registrar_operacao()</text>
+
+            <!-- externos -->
+            <path class="d-dash" d="M634 392 L678 392"/>
+            <rect class="d-box" x="678" y="360" width="182" height="64" rx="2"/>
+            <text class="d-t-l" x="696" y="382">EXTERNOS</text>
+            <text class="d-t-s" x="696" y="402">Pluggy · Google · Asaas · S3</text>
+
+            <!-- barramento p/ dados -->
+            <path class="d-line" d="M440 424 L440 450 M150 450 L730 450 M150 450 L150 476 M440 450 L440 476 M730 450 L730 476"/>
+            <path class="d-line" d="M144 468 L150 476 L156 468 M434 468 L440 476 L446 468 M724 468 L730 476 L736 468"/>
+
+            <!-- camada de dados -->
+            <rect class="d-box" x="50" y="476" width="200" height="72" rx="2"/>
+            <text class="d-t" x="68" y="502">PostgreSQL 16</text>
+            <text class="d-t-s" x="68" y="522">multi-tenant · RLS na fase 2</text>
+            <text class="d-t-s" x="68" y="538">soft delete universal</text>
+
+            <rect class="d-box" x="340" y="476" width="200" height="72" rx="2"/>
+            <text class="d-t" x="358" y="502">Motores determinísticos</text>
+            <text class="d-t-s" x="358" y="522">séries · projeção · fatura</text>
+            <text class="d-t-s" x="358" y="538">dedup · categorização · padrões</text>
+
+            <rect class="d-box" x="630" y="476" width="200" height="72" rx="2"/>
+            <text class="d-t" x="648" y="502">Workers · Celery</text>
+            <text class="d-t-s" x="648" y="522">sync OF · lembretes</text>
+            <text class="d-t-s" x="648" y="538">materialização · NLG</text>
+          </svg>
+        </div>
+        <figcaption>
+          A linha tracejada à esquerda é o ponto todo: a interface web entra pela
+          mesma porta que os agentes. Trocar o canal — painel hoje, WhatsApp na
+          fase 6 — não toca em nada abaixo do orquestrador.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══════════ 03 ══════════ -->
+  <section id="dados">
+    <div class="num">§ 03</div>
+    <div class="body-col">
+      <h2>Modelo de dados</h2>
+      <p>
+        Trinta tabelas em cinco domínios. Dinheiro sempre em <code>BIGINT</code>
+        de centavos, nunca float. Toda tabela carrega <code>conta_id</code>.
+        Timestamps em UTC, com o fuso do usuário guardado na conta.
+      </p>
+
+      <div class="tw">
+        <table>
+          <thead>
+            <tr><th>Domínio</th><th>Tabelas</th><th class="tnum">Qtd.</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Núcleo e tenancy</td>
+              <td class="mono">contas · usuarios · membros_conta · convites</td>
+              <td class="tnum mono">4</td>
+            </tr>
+            <tr>
+              <td>Finanças</td>
+              <td class="mono">categorias · contas_bancarias · cartoes · faturas · pessoas · series · series_excecoes · transacoes</td>
+              <td class="tnum mono">8</td>
+            </tr>
+            <tr>
+              <td>Open Finance</td>
+              <td class="mono">conexoes_of · of_transacoes_brutas · conciliacoes</td>
+              <td class="tnum mono">3</td>
+            </tr>
+            <tr>
+              <td>Agenda</td>
+              <td class="mono">contas_google · compromissos_series · compromissos · compromissos_pessoas</td>
+              <td class="tnum mono">4</td>
+            </tr>
+            <tr>
+              <td>Organização</td>
+              <td class="mono">projetos · categorias_organizacao · tarefas · notas · arquivos</td>
+              <td class="tnum mono">5</td>
+            </tr>
+            <tr>
+              <td>Agentes e auditoria</td>
+              <td class="mono">agente_perfis · conversas · mensagens · operacoes · padroes_detectados · lembretes · lembretes_envios</td>
+              <td class="tnum mono">7</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>As invariantes que não se negociam</h3>
+      <ul class="plain">
+        <li><strong>Dinheiro em centavos.</strong> Sufixo <code>_centavos</code> no nome. Formatação só na borda; o backend devolve <code>123456</code>, nunca <code>"R$ 1.234,56"</code>. Parcela com resto distribui nos primeiros: <code>1000 / 3</code> → <code>334, 333, 333</code>.</li>
+        <li><strong>Toda query filtra por <code>conta_id</code>.</strong> Vem do contexto de request, nunca do corpo. Repository recebe como primeiro argumento explícito — até a RLS entrar na fase 2, é a única barreira.</li>
+        <li><strong>Toda escrita passa por <code>registrar_operacao()</code></strong> com snapshot <code>antes</code> e <code>depois</code>, aceita <code>Idempotency-Key</code> e devolve <code>operacao_id</code>.</li>
+        <li><strong>Nenhum <code>DELETE</code> físico.</strong> Só <code>deleted_at</code>, e toda leitura filtra <code>deleted_at IS NULL</code>.</li>
+        <li><strong><code>data_competencia</code> ≠ <code>data_efetiva</code>.</strong> Em que mês conta versus quando o dinheiro moveu. Relatórios usam competência; fluxo de caixa usa efetiva.</li>
+        <li><strong><code>categoria_travada = true</code> é sagrado.</strong> Nenhum processo automático — sync, job, LLM — sobrescreve categoria ajustada à mão.</li>
+      </ul>
+
+      <div class="note crit">
+        <span class="lbl">Armadilha</span>
+        <p>
+          Gasto no cartão <strong>não é saída de caixa</strong> no dia da compra.
+          O fluxo de caixa considera o pagamento da fatura; a análise por
+          categoria considera a data da compra. Duas visões, um dado. Misturar as
+          duas é o bug mais comum deste domínio — sempre escreva teste ao mexer aqui.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 04 ══════════ -->
+  <section id="motores">
+    <div class="num">§ 04</div>
+    <div class="body-col">
+      <h2>Seis motores determinísticos</h2>
+      <p>
+        Esta é a parte que decide se o produto funciona. Código puro, testável
+        com fixtures, sem nenhuma chamada de modelo. Rodam em menos de dois
+        segundos, sem banco e sem rede.
+      </p>
+
+      <div class="grid">
+        <article>
+          <h3>Séries <em>4.1</em></h3>
+          <p>
+            Recorrência e parcelamento na mesma abstração. Job diário materializa
+            13 meses à frente como <code>previsto</code>, respeitando exceções.
+            Dia 31 resolve para o último dia do mês; “esta e as futuras” encerra
+            a série antiga e cria uma nova, nunca reescreve histórico.
+          </p>
+        </article>
+        <article>
+          <h3>Fatura <em>4.2</em></h3>
+          <p>
+            A compra entra na primeira fatura cujo fechamento é posterior ou igual
+            à data. Parcelada distribui uma parcela por fatura consecutiva. Total
+            sempre derivado por soma — campo mantido à mão desincroniza.
+          </p>
+        </article>
+        <article>
+          <h3>Projeção <em>4.3</em></h3>
+          <p>
+            Saldo inicial mais realizados até hoje, mais previstos até o fim do
+            período. Linha cheia até hoje, tracejada depois. Uma query com window
+            function, cache Redis por <code>(conta_id, período)</code>.
+          </p>
+        </article>
+        <article>
+          <h3>Deduplicação <em>4.4</em></h3>
+          <p>
+            Tudo entra em staging primeiro. Casa por <code>externo_id</code>,
+            depois por <code>hash_dedup</code>. Candidato manual com mesmo valor
+            em ±3 dias não vira duplicata: vira sugestão de conciliação com score.
+          </p>
+        </article>
+        <article>
+          <h3>Categorização <em>4.5</em></h3>
+          <p>
+            Cascata de cinco passos: travada → palavra-chave → memória do usuário
+            → regra de merchant → “Outros”. O LLM só sugere entre categorias
+            existentes, e só quando a cascata falha.
+          </p>
+        </article>
+        <article>
+          <h3>Padrões <em>4.6</em></h3>
+          <p>
+            Job semanal sobre 90 dias. Emite um padrão com ≥3 ocorrências, desvio
+            do intervalo ≤4 dias e variação de valor ≤15%. “Programar” converte em
+            série; “✕” silencia por 60 dias.
+          </p>
+        </article>
+      </div>
+
+      <p>
+        Casos de borda obrigatórios em qualquer mexida: dia 31 em fevereiro,
+        parcelamento com resto de centavo, transação na virada de mês, fuso em
+        horário de verão, importação duplicando lançamento manual.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ 05 ══════════ -->
+  <section id="api">
+    <div class="num">§ 05</div>
+    <div class="body-col">
+      <h2>Contrato de API</h2>
+      <p>
+        REST sob <code>/api/v1</code>. Cookie de sessão no painel, bearer curto
+        nos demais canais. Toda escrita aceita <code>Idempotency-Key</code> e
+        devolve <code>operacao_id</code> — é o que permite o “Desfazer”.
+      </p>
+      <p>
+        O endpoint mais importante é <code>/painel/{mesa}</code>: devolve os cards
+        já calculados e <em>já com a frase pronta</em>. O frontend não faz conta —
+        nem soma, nem percentual, nem formatação de insight.
+      </p>
+
+      <pre><span class="c">GET /api/v1/painel/financas?periodo=2026-08</span>
+{
+  <span class="k">"chave"</span>: "saldo_periodo",
+  <span class="k">"titulo"</span>: "Saldo do período",
+  <span class="k">"valor_principal"</span>: { "centavos": -99582, "formato": "moeda" },
+  <span class="k">"metricas"</span>: [
+    { "rotulo": "Recebido", "centavos": 435690 },
+    { "rotulo": "Pago",     "centavos": 535272 }
+  ],
+  <span class="k">"serie"</span>: [{ "x": "2026-08-01", "y": 102368 }],
+  <span class="k">"insight"</span>: {
+    "agente": "financas",
+    "texto": "seu saldo está 181% abaixo do saldo de julho, com
+              Transferências puxando os gastos.",
+    "acao": { "rotulo": "Explorar", "rota": "/transacoes?de=2026-08-01" }
+  },
+  <span class="k">"rodape"</span>: "Arraste para ler o dia · Clique no pico fixa o dia",
+  <span class="k">"vazio"</span>: null
+}</pre>
+
+      <div class="note">
+        <span class="lbl">Meta</span>
+        <p>
+          Painel completo em menos de 400 ms com 5.000 transações. Se passar
+          disso, o problema é query N+1 ou falta de cache Redis por
+          <code>(conta_id, período)</code> — não é hora de otimizar o frontend.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 06 ══════════ -->
+  <section id="agentes">
+    <div class="num">§ 06</div>
+    <div class="body-col">
+      <h2>Camada de agentes</h2>
+      <p>
+        O usuário não escolhe com quem fala. O orquestrador — uma chamada barata
+        que não gera texto para o usuário — devolve apenas o domínio e uma
+        reformulação normalizada do pedido. O especialista responde assinando a
+        primeira linha.
+      </p>
+
+      <div class="tw">
+        <table>
+          <thead>
+            <tr><th>Agente</th><th>Domínio</th><th>Ferramentas principais</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Theo</strong></td>
+              <td>diretor</td>
+              <td class="mono">status de integrações · resumo executivo · relatório consolidado · escalar suporte</td>
+            </tr>
+            <tr>
+              <td><strong>Martin</strong></td>
+              <td>finanças</td>
+              <td class="mono">registrar / editar / excluir transação · saldo · extrato · resumo por categoria · recorrência · pagar fatura · orçamento · relatório · padrões</td>
+            </tr>
+            <tr>
+              <td><strong>Sofi</strong></td>
+              <td>agenda</td>
+              <td class="mono">criar / mover / cancelar compromisso · consultar agenda · janela livre · detectar conflito · lembrete · link do Meet</td>
+            </tr>
+            <tr>
+              <td><strong>Luna</strong></td>
+              <td>organização</td>
+              <td class="mono">criar / concluir tarefa · projeto · escrever e buscar nota · guardar e buscar arquivo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Regras de construção</h3>
+      <ul class="plain">
+        <li>Prompts vivem em <code>agentes/prompts/*.md</code>, versionados. Nunca prompt inline em Python.</li>
+        <li>Toda tool é um wrapper fino sobre um service. Se a tool tem lógica própria, a lógica está no lugar errado.</li>
+        <li>Ids válidos vão no bloco de contexto e o prompt proíbe inventar. O wrapper valida e devolve erro legível para o modelo.</li>
+        <li>Toda tool destrutiva é <code>requer_confirmacao=True</code>: devolve um card de confirmação e só o retorno do botão executa.</li>
+        <li>Loop de tool-calling limitado a 8 iterações, 30 s por turno, teto de custo diário com degradação para modelo menor — nunca bloqueio.</li>
+      </ul>
+
+      <div class="note crit">
+        <span class="lbl">Segurança</span>
+        <p>
+          Conteúdo de mídia, PDF, transcrição e descrição bancária é
+          <strong>dado, não instrução</strong>. Sempre encapsulado em
+          delimitadores explícitos, com o modelo instruído a nunca seguir comandos
+          vindos de dentro desses blocos. Comprovante com texto injetado é um vetor
+          real. Senha, CVV e número de cartão nunca são repetidos nem gravados em
+          texto claro.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 07 ══════════ -->
+  <section id="aceite">
+    <div class="num">§ 07</div>
+    <div class="body-col">
+      <h2>Suíte de aceite — 30 casos</h2>
+      <p>
+        Testes parametrizados que fixam a entrada, o roteamento esperado, a tool
+        call exata e o comportamento da resposta. Contexto base fixo: quinta,
+        13/08/2026, fuso <code>America/Sao_Paulo</code>.
+      </p>
+
+      <div class="tw">
+        <table>
+          <thead>
+            <tr><th>Grupo</th><th>Casos</th><th>O que protege</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="n">01–06</td><td>Registro básico</td><td>valor por extenso, gíria, separador de milhar brasileiro, resolução de apelido de pessoa</td></tr>
+            <tr><td class="n">07–10</td><td>Datas</td><td>relativos, “segunda passada” ≠ próxima, futuro vira <code>previsto</code>, meia-noite no fuso da conta</td></tr>
+            <tr><td class="n">11–14</td><td>Séries</td><td>12× vira 12 parcelas e não um lançamento, “todo mês” vira recorrência, cancelar pede escopo</td></tr>
+            <tr><td class="n">15–20</td><td>Correção e desfazer</td><td>referência anafórica, troca de conta recalcula fatura, lote mostra contagem, desfazer é idempotente</td></tr>
+            <tr><td class="n">21–24</td><td>Consulta</td><td>todo número citado vem de tool, saldo atual ≠ projetado, relatório é assíncrono</td></tr>
+            <tr><td class="n">25–28</td><td>Roteamento</td><td>tarefa ≠ compromisso, duas intenções em sequência, fora de escopo declina sem inventar</td></tr>
+            <tr><td class="n">29–30</td><td>Segurança</td><td>credencial enviada não é gravada; injeção via comprovante não dispara tool destrutiva</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <pre><span class="c">#05</span>  "R$ 1.234,56 no dentista"
+     → valor_centavos: <span class="k">123456</span>
+     <span class="c">✱ separador de milhar brasileiro — o erro clássico é virar 1,23</span>
+
+<span class="c">#12</span>  "minha academia é 89 todo mês"
+     → criar_recorrencia{ freq: "mensal", valor_centavos: 8900 }
+     <span class="c">✱ NÃO pode virar transação avulsa</span>
+
+<span class="c">#26</span>  "me lembra de pagar o IPTU sexta"
+     → organizacao · criar_tarefa{ prazo: "2026-08-14" }
+     <span class="c">✱ é tarefa, não compromisso — o discriminador é a ausência de horário</span></pre>
+
+      <div class="note warn">
+        <span class="lbl">CI obrigatório</span>
+        <p>
+          Os casos <strong>#29</strong> e <strong>#30</strong> rodam a cada deploy
+          e não podem quebrar nunca. São os dois que, se falharem, geram incidente
+          de verdade — os outros 28 geram bug.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 08 ══════════ -->
+  <section id="nlg">
+    <div class="num">§ 08</div>
+    <div class="body-col">
+      <h2>O motor de frases</h2>
+      <p>
+        A frase de insight de cada card não é gerada por LLM: é escolhida por
+        condição e prioridade, e preenchida com dados. Latência zero, custo zero,
+        tom consistente. Havendo empate de prioridade, o desempate é uma rotação
+        determinística sobre <code>hash(conta_id + card + período)</code> — a frase
+        varia entre usuários e entre meses, mas é estável se a página recarregar.
+      </p>
+
+      <pre>SALDO_PERIODO = [
+  T(<span class="k">"negativo_vs_anterior"</span>, lambda m: m.saldo &lt; 0 and m.var_pct &gt; 20, <span class="k">90</span>,
+    "seu saldo está {pct} abaixo de {mes_anterior}, com {categoria_topo} "
+    "puxando os gastos.", acao=Explorar("/transacoes?ordem=valor")),
+
+  T(<span class="k">"positivo_recorde"</span>, lambda m: m.saldo &gt; 0 and m.saldo &gt; m.max_12m, <span class="k">85</span>,
+    "melhor saldo dos últimos 12 meses — {moeda} no azul."),
+
+  T(<span class="k">"sem_dados"</span>, lambda m: m.lancamentos == 0, <span class="k">100</span>,
+    "nenhum lançamento neste período ainda.",
+    acao=Primeira("registrar seu primeiro gasto")),
+]</pre>
+
+      <h3>Regras de tom</h3>
+      <ul class="plain">
+        <li>Minúscula na primeira letra — a frase continua o título do card.</li>
+        <li>Nunca elogiar nem repreender. Descrever e apontar.</li>
+        <li>Sempre um dado concreto na frase. Máximo de 140 caracteres.</li>
+        <li>Nunca “você deveria”. Em vez disso: “vale um olhar”, “dá para planejar”, “sobra margem”.</li>
+        <li>Todo card tem estado vazio próprio, com frase e botão de primeira ação — o app precisa ser bonito com zero dados.</li>
+      </ul>
+
+      <div class="note">
+        <span class="lbl">O produto</span>
+        <p>
+          Acima dos templates por card existe uma camada que compara períodos e só
+          dispara quando algo mudou de verdade: categoria que cresceu mais de 50%,
+          despesa acima de 2× o ticket médio, orçamento cruzando 80%, recorrência
+          que não veio na data, conta sem sincronizar há 48 h. O painel bonito traz
+          o usuário de volta; o aviso certo na hora certa é o que faz ele pagar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 09 ══════════ -->
+  <section id="roadmap">
+    <div class="num">§ 09</div>
+    <div class="body-col">
+      <h2>Roadmap</h2>
+      <p>
+        TDD por fase: os critérios de aceite viram testes antes da implementação, e
+        nenhuma fase avança com teste vermelho.
+      </p>
+
+      <div class="tw">
+        <table>
+          <thead>
+            <tr><th>Fase</th><th>Escopo</th><th>Critério de aceite</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="n">1</td>
+              <td><strong>Fundação</strong><br>schema, auth, CRUD financeiro</td>
+              <td>criar transação, categoria, conta e cartão pela API; tenancy isolado; bordas de fatura passando</td>
+              <td><span class="pill now">próxima</span></td>
+            </tr>
+            <tr>
+              <td class="n">2</td>
+              <td><strong>Motores</strong><br>séries, projeção, fatura, categorização, RLS</td>
+              <td>série ancorada no dia 31 materializa certo em fevereiro; 12× distribui em 12 faturas; projeção bate com cálculo manual em 3 fixtures</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="n">3</td>
+              <td><strong>Painel</strong><br>8 cards de Finanças, NLG, design system</td>
+              <td>carrega em menos de 400 ms com 5.000 transações</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="n">4</td>
+              <td><strong>Open Finance</strong><br>Pluggy, staging, dedup, conciliação</td>
+              <td>importar 500 transações sem duplicar nenhuma das 20 lançadas à mão antes</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="n">5</td>
+              <td><strong>Agentes</strong><br>roteador, especialistas, tools, chat SSE</td>
+              <td>os 30 casos passam; desfazer reverte de verdade; exclusão sempre confirma</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="n">6</td>
+              <td><strong>WhatsApp</strong><br>adaptador de canal, botões, mídia</td>
+              <td>paridade funcional com o chat do painel</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="n">7</td>
+              <td><strong>Agenda, organização e billing</strong><br>Google bidirecional, drive, Asaas</td>
+              <td>sync sem eco, cobrança por PIX e cartão, lembretes agendados</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <span class="lbl">Decisões em aberto</span>
+        <p>
+          Duas escolhas estão registradas como <em>defaults adotados</em> no topo
+          da espec e são fáceis de trocar antes da Fase 1: a stack
+          (FastAPI + PostgreSQL + Next.js, contra Node) e o canal inicial (chat no
+          painel, contra WhatsApp — que depende de aprovação da Meta).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>
+      <strong>meuassesorF.I</strong> · especificação em <span class="mono">docs/ESPEC.md</span>,
+      regras de trabalho em <span class="mono">CLAUDE.md</span>
+    </div>
+    <div>
+      Comportamento e arquitetura reimplementados a partir de análise funcional.
+      Nenhum código, asset ou texto de terceiros foi copiado.
+    </div>
+  </footer>
+
+</div>
