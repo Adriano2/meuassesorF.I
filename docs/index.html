@@ -183,12 +183,13 @@
   .princ p { font-size: 15px; color: var(--ink-soft); max-width: none; }
 
   /* ─────────────── diagrama ─────────────── */
-  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
   .canvas {
     background: var(--surface);
     border: 1px solid var(--rule);
     padding: 18px;
     overflow-x: auto;
+    min-width: 0;
   }
   .canvas svg { display: block; min-width: 660px; width: 100%; height: auto; }
   figcaption { font-size: 13.5px; color: var(--ink-faint); }
@@ -249,16 +250,25 @@
   }
   .note.crit { border-left-color: var(--neg); background: var(--neg-soft); }
   .note.warn { border-left-color: var(--warn); background: var(--warn-soft); }
-  .note p { font-size: 14.5px; max-width: none; }
+  .note p { font-size: 14.5px; max-width: none; min-width: 0; overflow-wrap: break-word; }
   .note .lbl { white-space: nowrap; padding-top: 4px; }
   .note.crit .lbl { color: var(--neg); }
   .note.warn .lbl { color: var(--warn); }
 
   /* ─────────────── listas ─────────────── */
   ul.plain { list-style: none; display: flex; flex-direction: column; gap: 9px; max-width: 68ch; }
-  ul.plain li { display: flex; gap: 12px; font-size: 15px; }
+  ul.plain li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 15px;
+    overflow-wrap: break-word;
+  }
   ul.plain li::before {
-    content: "—"; color: var(--accent); font-family: var(--f-mono); flex: none;
+    content: "—";
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--accent);
+    font-family: var(--f-mono);
   }
 
   /* ─────────────── selos de fase ─────────────── */
@@ -280,7 +290,7 @@
   }
 
   @media (max-width: 720px) {
-    section { grid-template-columns: 1fr; gap: 0; padding-top: 42px; }
+    section { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 42px; }
     .num { padding-top: 0; padding-bottom: 10px; }
     .wrap { padding: 0 18px 72px; }
     body { font-size: 16px; }
