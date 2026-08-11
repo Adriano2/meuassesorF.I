@@ -4,7 +4,9 @@ Plataforma de assessoria pessoal — finanças, agenda, tarefas e organização 
 operada por um painel web e por uma equipe de agentes de IA
 (Theo/diretor, Martin/finanças, Sofi/agenda, Luna/organização).
 
-**Estado atual: documentação.** Ainda não há código. A Fase 1 é a próxima etapa.
+**Estado atual: Fase 1 concluída** — schema, autenticação e CRUD financeiro, com
+93 testes verdes. A Fase 2 (motores de série, projeção e categorização) é a
+próxima etapa.
 
 ## Documentos
 
@@ -32,10 +34,26 @@ Redis, frontend Next.js 15 + TypeScript + TailwindCSS + TanStack Query, camada d
 IA com o SDK da Anthropic e tool-calling nativo. Integrações: Pluggy
 (Open Finance), Google Calendar/Contacts, Asaas, S3/GCS e WhatsApp Cloud API.
 
+## Como rodar
+
+```bash
+docker compose up -d postgres     # ou um PostgreSQL 16 local
+cp .env.example .env
+make instalar
+make migrate
+make dev                          # API em http://localhost:8000/docs
+make test                         # 93 testes
+make lint                         # ruff + mypy
+```
+
+A suíte de integração exige PostgreSQL de verdade — o schema usa `citext`,
+arrays, enums nativos e índices parciais, e testar contra SQLite daria falso
+verde. Sem banco, os testes de integração são pulados e os de motor rodam.
+
 ## Roadmap
 
-1. **Fundação** — schema, auth, CRUD financeiro
-2. **Motores** — séries, projeção, fatura, categorização, RLS
+1. ~~**Fundação** — schema, auth, CRUD financeiro~~ ✅
+2. **Motores** — séries, projeção, categorização, RLS
 3. **Painel** — `/painel/{mesa}` com cards prontos do servidor + NLG
 4. **Open Finance** — Pluggy, staging, dedup, conciliação
 5. **Agentes** — roteador, especialistas, tools, operações reversíveis, chat SSE
@@ -44,10 +62,27 @@ IA com o SDK da Anthropic e tool-calling nativo. Integrações: Pluggy
 
 Critérios de aceite de cada fase em [`docs/ESPEC.md` §8](docs/ESPEC.md).
 
-## Como começar a Fase 1
+## O que a Fase 1 entregou
 
-Abra uma sessão do Claude Code na raiz do repositório e peça **apenas a Fase 1**,
-com os testes dos critérios de aceite escritos antes da implementação. O
-`CLAUDE.md` já carrega as invariantes (dinheiro em centavos, `conta_id` em toda
-query, `registrar_operacao` em toda escrita, soft delete) — não é preciso repetir
-nada disso no prompt.
+| Camada | Onde | O que tem |
+|---|---|---|
+| Motores | `backend/app/motores/` | ciclo de fatura: competência da compra, fechamento/vencimento, distribuição de parcelas |
+| Núcleo | `backend/app/core/` | centavos sem perda de resto, fuso e ancoragem de dia, erros de domínio, JWT e bcrypt |
+| Dados | `backend/app/models/`, `repositories/` | 12 tabelas, `conta_id` explícito em toda query, soft delete universal |
+| Regra | `backend/app/services/` | categorias, contas, cartões, faturas, transações, `registrar_operacao` em toda escrita |
+| HTTP | `backend/app/api/v1/` | 19 rotas, `Idempotency-Key`, `operacao_id` em toda resposta de escrita |
+
+Critérios de aceite, todos cobertos por teste: criar transação, categoria, conta
+e cartão pela API; multi-tenancy isolado; bordas de fatura passando.
+
+**Duas decisões tomadas aqui que não estavam na espec** — ambas documentadas no
+cabeçalho de `services/financas.py`: transação `realizado` em conta bancária move
+`saldo_centavos` (compra no cartão não move — quem move é o pagamento da fatura);
+e cada parcela de uma compra parcelada conta na competência da sua fatura,
+enquanto a compra à vista mantém a data da compra.
+
+## Como seguir para a Fase 2
+
+Abra uma sessão do Claude Code na raiz e peça **apenas a Fase 2**, com os testes
+dos critérios de aceite escritos antes. O `CLAUDE.md` já carrega as invariantes —
+não é preciso repetir nada disso no prompt.
