@@ -12,6 +12,10 @@ operada por um painel web e por uma equipe de agentes de IA
 |---|---|
 | [`CLAUDE.md`](CLAUDE.md) | Regras permanentes de trabalho no repositório. Lido automaticamente pelo Claude Code em cada sessão. |
 | [`docs/ESPEC.md`](docs/ESPEC.md) | Especificação técnica completa: análise do produto de referência, arquitetura, schema SQL, motores determinísticos, contrato de API, agentes e prompts, design system, roadmap, suíte de aceite dos agentes e motor de frases (NLG). |
+| [`docs/index.html`](docs/index.html) | Resumo visual navegável da especificação. Página autocontida — abre offline no navegador e é o que o GitHub Pages publica. |
+
+Publicado em **https://adriano2.github.io/meuassesorF.I/** (depende de Pages estar
+ativo: *Settings → Pages → Deploy from a branch → `claude/claude-code-platform-analysis-g8narb` / `/docs`*).
 
 ## Os dois princípios
 
