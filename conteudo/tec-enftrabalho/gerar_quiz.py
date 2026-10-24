@@ -20,6 +20,8 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
+from opcoes_logo import opcao_selo
+
 W, H, FPS, SR = 1080, 1920, 30, 44100
 
 # Paleta da identidade (cores de segurança ABNT NBR 7195 sobre tinta-marinho)
@@ -53,6 +55,12 @@ class Fontes:
 
     def __post_init__(self) -> None:
         self._cache: dict[tuple[str, int], ImageFont.FreeTypeFont] = {}
+        self._selo: Image.Image | None = None
+
+    def selo(self, tam: int) -> Image.Image:
+        if self._selo is None:
+            self._selo = opcao_selo(self.dir, None)
+        return self._selo.resize((tam, tam), Image.LANCZOS)
 
     def get(self, nome: str, tam: int) -> ImageFont.FreeTypeFont:
         chave = (nome, tam)
@@ -108,19 +116,6 @@ def quebrar(draw: ImageDraw.ImageDraw, texto: str, fonte, largura: int) -> list[
     return linhas
 
 
-def marca(draw: ImageDraw.ImageDraw, x: int, y: int, s: int) -> None:
-    """Cruz de quatro braços: azul, verde, vermelho e amarelo (os quatro conteúdos)."""
-    draw.rounded_rectangle([x, y, x + s, y + s], radius=s // 5, fill=(24, 40, 62), outline=(44, 64, 92), width=2)
-    b = s // 4  # espessura do braço
-    c = x + s // 2, y + s // 2
-    m = s // 7
-    draw.rectangle([c[0] - b // 2, y + m, c[0] + b // 2, c[1] - b // 2], fill=PILARES["enfermagem"][0])
-    draw.rectangle([x + m, c[1] - b // 2, c[0] - b // 2, c[1] + b // 2], fill=PILARES["seguranca"][0])
-    draw.rectangle([c[0] + b // 2, c[1] - b // 2, x + s - m, c[1] + b // 2], fill=PILARES["bombeiro"][0])
-    draw.rectangle([c[0] - b // 2, c[1] + b // 2, c[0] + b // 2, y + s - m], fill=AMARELO)
-    draw.rectangle([c[0] - b // 2, c[1] - b // 2, c[0] + b // 2, c[1] + b // 2], fill=(244, 246, 250))
-
-
 def ease(t: float) -> float:
     t = max(0.0, min(1.0, t))
     return 1 - (1 - t) ** 3
@@ -145,7 +140,8 @@ class Cena:
         d = ImageDraw.Draw(img)
         # faixa de pilar no topo
         d.rectangle([0, 0, W, 14], fill=self.cor)
-        marca(d, 70, 140, 96)
+        m = self.f.selo(110)
+        img.paste(m, (64, 134), m)
         d.text((190, 148), "@tec.enftrabalho", font=self.f.get("Barlow_700Bold", 44), fill=BRANCO)
         d.text((190, 202), "Enfermagem · Segurança · Bombeiro", font=self.f.get("Barlow_500Medium", 30), fill=NEVOA)
         # chip do pilar + selo QUIZ 5s

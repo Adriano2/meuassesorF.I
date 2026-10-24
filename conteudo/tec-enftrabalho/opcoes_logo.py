@@ -90,12 +90,16 @@ def texto_em_arco(img: Image.Image, txt: str, f, cx: float, cy: float, r: float,
         a += passo if not por_baixo else -passo
 
 
-def opcao_selo(fd: Path) -> Image.Image:
-    """C · Selo circular de brigada, com a cruz da saúde ao centro."""
-    img = Image.new("RGB", (S, S), BRANCO)
+def opcao_selo(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.Image:
+    """C · Selo circular de brigada, com a cruz de primeiros socorros ao centro.
+
+    fundo=None gera PNG transparente. O aro branco externo separa o selo de fundos escuros.
+    """
+    img = Image.new("RGBA", (S, S), (fundo or (0, 0, 0)) + ((255,) if fundo else (0,)))
     d = ImageDraw.Draw(img)
     cx = cy = S / 2
     R = S * .44
+    d.ellipse([cx - R - S * .022, cy - R - S * .022, cx + R + S * .022, cy + R + S * .022], fill=BRANCO)
     d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=TINTA)
     ri = R * .66
     d.ellipse([cx - ri - S * .012, cy - ri - S * .012, cx + ri + S * .012, cy + ri + S * .012], fill=AMARELO)
@@ -107,7 +111,7 @@ def opcao_selo(fd: Path) -> Image.Image:
     rt = (R + ri) / 2
     texto_em_arco(img, "TEC.ENF TRABALHO", f, cx, cy, rt, math.radians(200), math.radians(340), BRANCO)
     f2 = fonte(fd, "BarlowCondensed_700Bold", int(S * .046))
-    texto_em_arco(img, "SAÚDE · SEGURANÇA · BRIGADA", f2, cx, cy, rt - S * .012, math.radians(20), math.radians(160), AMARELO, por_baixo=True)
+    texto_em_arco(img, "SAÚDE · SEGURANÇA · BOMBEIRO", f2, cx, cy, rt - S * .012, math.radians(20), math.radians(160), AMARELO, por_baixo=True)
     for ang in (180, 0):  # estrelas-ponto separadoras
         x, y = cx + rt * math.cos(math.radians(ang)), cy + rt * math.sin(math.radians(ang))
         d.ellipse([x - S * .012, y - S * .012, x + S * .012, y + S * .012], fill=AMARELO)
@@ -137,7 +141,7 @@ def opcao_monograma(fd: Path) -> Image.Image:
 OPCOES = [
     ("A", "Escudo + cruz + batimento", opcao_escudo),
     ("B", "Capacete + batimento", opcao_capacete),
-    ("C", "Selo de brigada", opcao_selo),
+    ("C", "Selo de brigada", opcao_selo),  # escolhido em 24/10/2026
     ("D", "Monograma te+", opcao_monograma),
 ]
 
@@ -152,7 +156,7 @@ def main() -> None:
     fl = fonte(a.fontes, "BarlowCondensed_800ExtraBold", 44)
     dp = ImageDraw.Draw(prancha)
     for i, (letra, nome, fn) in enumerate(OPCOES):
-        img = fn(a.fontes).resize((T, T), Image.LANCZOS)
+        img = fn(a.fontes).convert("RGB").resize((T, T), Image.LANCZOS)
         img.save(a.saida / f"opcao-{letra}.png")
         mini = img.resize((500, 500), Image.LANCZOS)
         mask = Image.new("L", (500, 500), 0)
