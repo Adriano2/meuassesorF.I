@@ -1,0 +1,249 @@
+[
+  {
+    "id": "primeiros-socorros",
+    "legenda": "Você saberia o que fazer nos primeiros minutos depois de um acidente no trabalho? 🚑\n\nNeste carrossel, uma queda na área de produção com suspeita de entorse de tornozelo mostra o passo a passo: avaliar, cuidar no local e encaminhar.\n\nEm caso grave, ligue SAMU 192 ou Bombeiros 193.\n\nPrimeiros socorros não substituem o atendimento médico, mas fazem diferença até ele chegar.\n\nSalve para consultar e compartilhe com quem trabalha com você.\n\n#tecenftrabalho #primeirossocorros #enfermagemdotrabalho #segurancadotrabalho #sst",
+    "fonte": "Manual de primeiros socorros do Ministério da Saúde; Diretrizes da American Heart Association; NR-7.",
+    "slides": [
+      {
+        "tipo": "capa",
+        "cena": "Close-up portrait of the woman from the photo reference, seen from the chest up, looking toward the camera with a calm confident expression, stethoscope around her neck, white short-sleeved nursing uniform with a green cross patch on the right chest. Industrial factory hall softly out of focus behind her. The woman fills the right 60 percent of the frame; the left 40 percent and the top are darker, uncluttered factory background so a title can be placed there.",
+        "foco": [
+          0.7,
+          0.4
+        ],
+        "escurecer": "esquerda",
+        "titulo": [
+          "Primeiros",
+          "socorros",
+          "no ambiente",
+          "de trabalho"
+        ],
+        "tamanhos": [
+          150,
+          176,
+          84,
+          84
+        ],
+        "pincel": [
+          "Agir rápido pode",
+          "salvar vidas!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Prevenção"
+          ],
+          [
+            "coracao",
+            "Saúde"
+          ],
+          [
+            "capacete",
+            "Segurança"
+          ]
+        ]
+      },
+      {
+        "tipo": "cena",
+        "numero": 1,
+        "titulo": "O que aconteceu?",
+        "cena": "Wide scene inside an industrial production hall: the woman from the photo reference, in white nursing uniform and blue gloves, kneels beside a male worker in dark blue overalls with yellow reflective stripes lying on the floor after a fall, holding his lower leg. A forklift and yellow safety railings in the background, a white hard hat on the floor. Leave the upper right area of the frame empty for a speech bubble.",
+        "foco": [
+          0.5,
+          0.6
+        ],
+        "escurecer": "topo",
+        "balao": {
+          "texto": "Durante uma atividade na área de produção, um colaborador sofreu uma queda e há suspeita de entorse no tornozelo.",
+          "x": 560,
+          "y": 120,
+          "w": 480,
+          "cauda": [
+            470,
+            400
+          ]
+        },
+        "pincel": {
+          "linhas": [
+            "Neste momento,",
+            "cada segundo importa!"
+          ],
+          "x": 560,
+          "y": 470
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 2,
+        "titulo": "Avaliação inicial",
+        "cena": "Medium shot: the woman from the photo reference, in white nursing uniform with stethoscope and blue gloves, kneeling and examining an injured ankle, looking down calmly and attentively. Blurred factory with yellow racks behind her. The woman is on the right half of the frame; the left side has space for a card.",
+        "foco": [
+          0.65,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cartao_check": {
+          "titulo": "Verifique:",
+          "itens": [
+            "Consciência",
+            "Respiração",
+            "Sinais vitais",
+            "Tipo de lesão"
+          ],
+          "x": 36,
+          "y": 360,
+          "w": 380
+        },
+        "balao": {
+          "texto": "Mantenha a calma. Vou avaliar a gravidade da lesão e prestar os primeiros cuidados.",
+          "x": 560,
+          "y": 330,
+          "w": 470,
+          "cauda": [
+            640,
+            520
+          ]
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 3,
+        "titulo": "Cuidados no local",
+        "cena": "Close view: the woman from the photo reference, in white nursing uniform, kneeling and wrapping a white elastic bandage around a worker's ankle in a work boot, wearing blue gloves, focused expression. Blurred industrial hall behind. The woman and the leg occupy the left 65 percent; the right side is plain blurred background for an information card.",
+        "foco": [
+          0.4,
+          0.5
+        ],
+        "escurecer": "topo",
+        "balao": {
+          "texto": "Vamos imobilizar o tornozelo e aplicar o protocolo de primeiros socorros.",
+          "x": 36,
+          "y": 800,
+          "w": 440,
+          "cauda": [
+            260,
+            950
+          ]
+        },
+        "cartao_icones": {
+          "itens": [
+            [
+              "imobilizar",
+              "Imobilize a região"
+            ],
+            [
+              "gelo",
+              "Aplique gelo envolto em pano"
+            ],
+            [
+              "elevar",
+              "Mantenha o membro elevado"
+            ],
+            [
+              "proibido",
+              "Evite movimentar e não ofereça medicação sem orientação médica"
+            ]
+          ],
+          "x": 640,
+          "y": 180,
+          "w": 400
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 4,
+        "titulo": "E depois?",
+        "cena": "Medium shot: the woman from the photo reference, in white nursing uniform with stethoscope, holding a clipboard and talking to a worker in a high-visibility yellow vest and white hard hat, who is seen from behind on the right. Blurred factory. The woman is on the left, with empty space above her for a speech bubble.",
+        "foco": [
+          0.45,
+          0.5
+        ],
+        "escurecer": "topo",
+        "balao": {
+          "texto": "Após o atendimento no local, o colaborador deve ser avaliado por um profissional de saúde. O afastamento e o acompanhamento são importantes para evitar complicações.",
+          "x": 300,
+          "y": 250,
+          "w": 500,
+          "cauda": [
+            200,
+            600
+          ]
+        },
+        "barra": {
+          "icone": "prancheta",
+          "texto": "Registre o atendimento, notifique se necessário e siga os protocolos da empresa."
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 5,
+        "titulo": "Lembre-se!",
+        "cena": "Empty industrial production hall, softly blurred, with yellow safety railings and shelving, cool blue-gray tones, no people, no text, no signs.",
+        "foco": [
+          0.5,
+          0.5
+        ],
+        "escurecer": "geral",
+        "cartao_icones": {
+          "itens": [
+            [
+              "alerta",
+              "Primeiros socorros não substituem o atendimento médico."
+            ],
+            [
+              "check",
+              "Treinamento e prevenção reduzem os riscos de acidentes."
+            ],
+            [
+              "pessoas",
+              "Todos devem saber como agir!"
+            ]
+          ],
+          "x": 60,
+          "y": 250,
+          "w": 960,
+          "grande": true
+        },
+        "pincel": {
+          "linhas": [
+            "Mais preparo,",
+            "menos acidentes!"
+          ],
+          "x": 240,
+          "y": 1010
+        },
+        "rodape_texto": "Emergência: SAMU 192 · Bombeiros 193"
+      },
+      {
+        "tipo": "final",
+        "cena": "Portrait of the woman from the photo reference, from the chest up, in white nursing uniform with stethoscope, a gentle confident look toward the camera, one hand lightly near her chin. Solid dark navy blue background with a very subtle texture, the woman on the left 55 percent of the frame, empty space on the right.",
+        "foco": [
+          0.35,
+          0.4
+        ],
+        "frase": [
+          "Cuidar também",
+          "é prevenir!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Segurança"
+          ],
+          [
+            "coracao",
+            "Saúde"
+          ],
+          [
+            "folha",
+            "Qualidade de vida"
+          ],
+          [
+            "capacete",
+            "Trabalho seguro"
+          ]
+        ]
+      }
+    ]
+  }
+]

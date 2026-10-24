@@ -9,6 +9,9 @@ Não faz parte da plataforma; fica aqui só para versionar os geradores.
 | `gerar_quiz.py` | Renderiza os Reels 1080×1920 com narração em pt-BR, contagem de 5 s e resposta. `--estilo tema` gera a versão com ilustração, cartão de pergunta e caixa verde de resposta (fundo branco) |
 | `gerar_logo.py` | Gera os PNGs finais do logo (selo escolhido: perfil, transparente e horizontal) |
 | `gerar_carrossel.py` | Gera os slides dos carrosséis (1080×1350, fundo branco) a partir de `carrosseis.json`, no mesmo estilo dos quizzes |
+| `gerar_ilustracoes.py` | Gera com o Gemini as ilustrações dos carrosséis ilustrados, a partir das referências em `referencias/` (sem texto na imagem) |
+| `gerar_carrossel_ilustrado.py` | Monta os slides ilustrados: arte + título, balões, cartões e faixas desenhados com as fontes da marca |
+| `carrosseis_ilustrados.json` | Texto, cena e posição dos elementos de cada slide ilustrado |
 | `amostras_voz.py` | Gera a mesma frase em 4 vozes femininas Chirp 3 HD para escolher |
 | `opcoes_logo.py` | Gera os quatro conceitos de logo e a prancha comparativa em `logo-opcoes/` |
 
@@ -64,3 +67,19 @@ python3 gerar_quiz.py --fontes ./fontes --saida ./videos --estilo tema --voz gem
 
 O modelo padrão é `gemini-2.5-flash-preview-tts`; para trocar, defina `GEMINI_TTS_MODEL`. A faixa grátis limita pedidos
 por minuto, então o gerador espera e tenta de novo quando recebe HTTP 429. Cada trecho fica em cache.
+
+## Carrosséis ilustrados (estilo história em quadrinhos)
+
+As referências (`referencias/ref-foto.jpg` e `referencias/ref-ilustracao.png`) **não são versionadas**: o repositório é público.
+Cada pessoa que rodar precisa colocá-las nessa pasta. As ilustrações geradas também ficam fora do git.
+
+```bash
+export GEMINI_API_KEY=...
+python3 gerar_ilustracoes.py --saida ./ilustracoes                 # 7 imagens por carrossel
+python3 gerar_ilustracoes.py --saida ./ilustracoes --slide 3       # refaz só um slide
+python3 gerar_carrossel_ilustrado.py --fontes ./fontes --ilustracoes ./ilustracoes --saida ./carrosseis-ilustrados
+python3 gerar_carrossel_ilustrado.py --fontes ./fontes --saida ./teste --teste   # só para ver o layout, sem gerar arte
+```
+
+O modelo de imagem padrão é `gemini-2.5-flash-image`; troque com `GEMINI_IMAGE_MODEL`.
+O texto dos slides nunca é gerado pela IA, para não haver erro de português dentro da imagem.
