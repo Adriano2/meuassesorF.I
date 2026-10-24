@@ -14,6 +14,8 @@ import base64
 import hashlib
 import json
 import os
+import time
+import urllib.error
 import urllib.request
 import math
 import random
@@ -121,8 +123,60 @@ def carregar_gravacao(arq: Path, tmp: Path) -> np.ndarray:
     return dados * 0.95
 
 
+ESTILO_GEMINI = "Diga com voz suave, doce e acolhedora, em português do Brasil, em ritmo calmo: "
+
+
+def falar_gemini(texto: str, nome: str, destino: Path) -> None:
+    """Voz do Gemini TTS pela chave do Google AI Studio (GEMINI_API_KEY). Mesmo cache da voz Chirp.
+
+    O modelo vem de GEMINI_TTS_MODEL (padrão gemini-2.5-flash-preview-tts); troque se a Google renomear.
+    """
+    cache_dir = Path(os.environ.get("TTS_CACHE", Path.home() / ".cache" / "tec-enftrabalho-tts"))
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    modelo = os.environ.get("GEMINI_TTS_MODEL", "gemini-2.5-flash-preview-tts")
+    arq = cache_dir / (hashlib.sha1(f"gemini|{modelo}|{nome}|{texto}".encode()).hexdigest() + ".wav")
+    if not arq.exists():
+        chave = os.environ.get("GEMINI_API_KEY")
+        if not chave:
+            raise SystemExit("Defina GEMINI_API_KEY (chave do Google AI Studio) para usar --voz gemini:NOME.")
+        corpo = {
+            "contents": [{"parts": [{"text": ESTILO_GEMINI + texto}]}],
+            "generationConfig": {
+                "responseModalities": ["AUDIO"],
+                "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": nome}}},
+            },
+        }
+        req = urllib.request.Request(
+            f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent",
+            data=json.dumps(corpo).encode(),
+            headers={"Content-Type": "application/json", "x-goog-api-key": chave},
+        )
+        for tentativa in range(4):  # a faixa grátis limita pedidos por minuto
+            try:
+                with urllib.request.urlopen(req, timeout=120) as r:
+                    resp = json.load(r)
+                break
+            except urllib.error.HTTPError as e:
+                if e.code == 429 and tentativa < 3:
+                    time.sleep(20 * (tentativa + 1))
+                    continue
+                raise SystemExit(f"Gemini TTS recusou o pedido (HTTP {e.code}): {e.read().decode()[:300]}")
+        try:
+            pcm = base64.b64decode(resp["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
+        except (KeyError, IndexError):
+            raise SystemExit(f"Resposta do Gemini TTS sem áudio: {json.dumps(resp)[:300]}")
+        with wave.open(str(arq), "wb") as w:  # PCM 16 bits, mono, 24 kHz
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(24000)
+            w.writeframes(pcm)
+    destino.write_bytes(arq.read_bytes())
+
+
 def falar(texto: str, voz: str, destino: Path) -> np.ndarray:
-    if voz.startswith("google:"):
+    if voz.startswith("gemini:"):
+        falar_gemini(texto, voz.split(":", 1)[1], destino)
+    elif voz.startswith("google:"):
         falar_google(texto, voz.split(":", 1)[1], destino)
     else:
         subprocess.run(
@@ -577,7 +631,7 @@ def main() -> None:
     ap.add_argument("--fontes", type=Path, required=True)
     ap.add_argument("--saida", type=Path, required=True)
     ap.add_argument("--voz", default="mb-br3",
-                    help="mb-br3 (sintetizador local) ou google:NOME, ex.: google:Vindemiatrix (voz Chirp 3 HD, precisa de GOOGLE_TTS_API_KEY)")
+                    help="mb-br3 (sintetizador local); gemini:NOME (chave do AI Studio em GEMINI_API_KEY, ex.: gemini:Achernar); google:NOME (Chirp 3 HD, GOOGLE_TTS_API_KEY)")
     ap.add_argument("--so", help="gera só o quiz com este id")
     ap.add_argument("--audios", type=Path, help="pasta com as gravações da sua voz: {id}-1.m4a (pergunta), -2 (alternativas), -3 (resposta), -4 (fechamento)")
     ap.add_argument("--fundo", choices=["tinta", "branco"], default="tinta")

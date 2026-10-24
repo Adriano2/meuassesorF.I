@@ -53,3 +53,14 @@ python3 gerar_quiz.py --fontes ./fontes --saida ./videos --estilo tema --audios 
 
 O gerador corta o silêncio das pontas, nivela o volume (-16 LUFS) e ajusta a duração do vídeo ao áudio.
 Se faltar algum arquivo, ele lista os nomes e não gera nada.
+
+## Voz do Gemini (chave do Google AI Studio)
+
+```bash
+export GEMINI_API_KEY=...        # chave do AI Studio; nunca vai para o repositório
+python3 amostras_voz.py --saida ./amostras            # compara 4 vozes femininas
+python3 gerar_quiz.py --fontes ./fontes --saida ./videos --estilo tema --voz gemini:Achernar
+```
+
+O modelo padrão é `gemini-2.5-flash-preview-tts`; para trocar, defina `GEMINI_TTS_MODEL`. A faixa grátis limita pedidos
+por minuto, então o gerador espera e tenta de novo quando recebe HTTP 429. Cada trecho fica em cache.
