@@ -4,8 +4,10 @@ Texto definido pela titular do perfil (o @ foi corrigido: o perfil é **@tec.enf
 `gerar_ilustracoes.py` aplica estas regras; o texto dos quadros é desenhado por `gerar_carrossel_ilustrado.py`.
 
 ## Personagem fixa
-Mulher da fotografia de referência como protagonista: rosto oval, olhos expressivos, sobrancelhas definidas,
-cabelo castanho-claro com reflexos dourados em coque alto, mechas soltas ao redor do rosto. Reconhecível em todos
+Mulher da fotografia de referência (a titular do perfil) como protagonista, fiel à foto: rosto cheio e arredondado,
+bochechas suaves, pele clara com blush rosado, sobrancelhas grossas e bem desenhadas, olhos verde-acinzentados,
+lábios cheios, brinco de pérola, cabelo castanho-claro com mechas loiro-acinzentadas em coque alto solto, com mechas
+soltas ao redor do rosto, e corpo curvilíneo. Não afinar o rosto nem o corpo: a foto tem prioridade sobre qualquer arte. Reconhecível em todos
 os episódios. Profissional de enfermagem do trabalho, uniforme branco, estetoscópio e acessórios adequados.
 
 ## Identidade visual
