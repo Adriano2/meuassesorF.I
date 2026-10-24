@@ -91,27 +91,29 @@ def texto_em_arco(img: Image.Image, txt: str, f, cx: float, cy: float, r: float,
 
 
 def opcao_selo(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.Image:
-    """C · Selo circular de brigada, com a cruz de primeiros socorros ao centro.
+    """C · Selo circular de bombeiro civil, com a cruz ao centro.
 
-    fundo=None gera PNG transparente. O aro branco externo separa o selo de fundos escuros.
+    fundo=None gera PNG transparente. O anel vermelho externo representa o bombeiro civil.
     """
     img = Image.new("RGBA", (S, S), (fundo or (0, 0, 0)) + ((255,) if fundo else (0,)))
     d = ImageDraw.Draw(img)
     cx = cy = S / 2
     R = S * .44
-    d.ellipse([cx - R - S * .022, cy - R - S * .022, cx + R + S * .022, cy + R + S * .022], fill=BRANCO)
+    aro = S * .03  # anel vermelho externo: bombeiro civil
+    d.ellipse([cx - R - aro, cy - R - aro, cx + R + aro, cy + R + aro], fill=VERMELHO)
     d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=TINTA)
     ri = R * .66
     d.ellipse([cx - ri - S * .012, cy - ri - S * .012, cx + ri + S * .012, cy + ri + S * .012], fill=AMARELO)
-    d.ellipse([cx - ri, cy - ri, cx + ri, cy + ri], fill=VERDE)  # cruz branca no verde: sinal de primeiros socorros
+    d.ellipse([cx - ri, cy - ri, cx + ri, cy + ri], fill=BRANCO)
     u = ri * .34
-    d.rounded_rectangle([cx - u / 2, cy - u * 1.5, cx + u / 2, cy + u * 1.5], radius=u * .15, fill=BRANCO)
-    d.rounded_rectangle([cx - u * 1.5, cy - u / 2, cx + u * 1.5, cy + u / 2], radius=u * .15, fill=BRANCO)
+    # cruz vermelha: escolha do titular do perfil, ciente de que é emblema protegido (Lei 2.380/1910)
+    d.rounded_rectangle([cx - u / 2, cy - u * 1.5, cx + u / 2, cy + u * 1.5], radius=u * .15, fill=VERMELHO)
+    d.rounded_rectangle([cx - u * 1.5, cy - u / 2, cx + u * 1.5, cy + u / 2], radius=u * .15, fill=VERMELHO)
     f = fonte(fd, "BarlowCondensed_800ExtraBold", int(S * .062))
     rt = (R + ri) / 2
     texto_em_arco(img, "TEC.ENF TRABALHO", f, cx, cy, rt, math.radians(200), math.radians(340), BRANCO)
     f2 = fonte(fd, "BarlowCondensed_700Bold", int(S * .046))
-    texto_em_arco(img, "SAÚDE · SEGURANÇA · BOMBEIRO", f2, cx, cy, rt - S * .012, math.radians(20), math.radians(160), AMARELO, por_baixo=True)
+    texto_em_arco(img, "SAÚDE · SEGURANÇA · BOMBEIRO CIVIL", f2, cx, cy, rt - S * .012, math.radians(20), math.radians(160), AMARELO, por_baixo=True)
     for ang in (180, 0):  # estrelas-ponto separadoras
         x, y = cx + rt * math.cos(math.radians(ang)), cy + rt * math.sin(math.radians(ang))
         d.ellipse([x - S * .012, y - S * .012, x + S * .012, y + S * .012], fill=AMARELO)
