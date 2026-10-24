@@ -101,9 +101,9 @@ def opcao_selo(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.I
     R = S * .44
     aro = S * .03  # anel vermelho externo: bombeiro civil
     d.ellipse([cx - R - aro, cy - R - aro, cx + R + aro, cy + R + aro], fill=VERMELHO)
-    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=AZUL)  # faixa azul (mesmo tom do conceito do capacete)
+    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=BRANCO)  # faixa branca
     ri = R * .66
-    d.ellipse([cx - ri - S * .012, cy - ri - S * .012, cx + ri + S * .012, cy + ri + S * .012], fill=AMARELO)
+    d.ellipse([cx - ri - S * .02, cy - ri - S * .02, cx + ri + S * .02, cy + ri + S * .02], fill=AZUL)  # aro azul (tom do capacete)
     d.ellipse([cx - ri, cy - ri, cx + ri, cy + ri], fill=VERDE)  # verde: segurança
     u = ri * .34
     b = u * .14  # contorno branco para a cruz vermelha não vibrar contra o verde
@@ -114,12 +114,12 @@ def opcao_selo(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.I
     d.rounded_rectangle([cx - u * 1.5, cy - u / 2, cx + u * 1.5, cy + u / 2], radius=u * .15, fill=VERMELHO)
     f = fonte(fd, "BarlowCondensed_800ExtraBold", int(S * .062))
     rt = (R + ri) / 2
-    texto_em_arco(img, "TEC.ENF TRABALHO", f, cx, cy, rt, math.radians(200), math.radians(340), BRANCO)
+    texto_em_arco(img, "TEC.ENF TRABALHO", f, cx, cy, rt, math.radians(200), math.radians(340), TINTA)
     f2 = fonte(fd, "BarlowCondensed_700Bold", int(S * .046))
-    texto_em_arco(img, "SAÚDE · SEGURANÇA · BOMBEIRO CIVIL", f2, cx, cy, rt - S * .012, math.radians(20), math.radians(160), AMARELO, por_baixo=True)
+    texto_em_arco(img, "SAÚDE · SEGURANÇA · BOMBEIRO CIVIL", f2, cx, cy, rt - S * .012, math.radians(20), math.radians(160), AZUL, por_baixo=True)
     for ang in (180, 0):  # estrelas-ponto separadoras
         x, y = cx + rt * math.cos(math.radians(ang)), cy + rt * math.sin(math.radians(ang))
-        d.ellipse([x - S * .012, y - S * .012, x + S * .012, y + S * .012], fill=AMARELO)
+        d.ellipse([x - S * .012, y - S * .012, x + S * .012, y + S * .012], fill=TINTA)
     return img
 
 
