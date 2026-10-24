@@ -10,7 +10,11 @@ DIR_TTF precisa conter BarlowCondensed_*.ttf e Barlow_*.ttf (Google Fonts, OFL).
 from __future__ import annotations
 
 import argparse
+import base64
+import hashlib
 import json
+import os
+import urllib.request
 import math
 import random
 import subprocess
@@ -74,11 +78,41 @@ class Fontes:
 
 # ---------------------------------------------------------------- áudio
 
+def falar_google(texto: str, nome: str, destino: Path) -> None:
+    """Voz neural Chirp 3 HD (pt-BR) pela API REST da Google. Chave em GOOGLE_TTS_API_KEY.
+
+    Guarda cada trecho em cache (voz + texto), então refazer um vídeo não gera nova cobrança.
+    """
+    cache_dir = Path(os.environ.get("TTS_CACHE", Path.home() / ".cache" / "tec-enftrabalho-tts"))
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    arq = cache_dir / (hashlib.sha1(f"{nome}|{texto}".encode()).hexdigest() + ".wav")
+    if not arq.exists():
+        chave = os.environ.get("GOOGLE_TTS_API_KEY")
+        if not chave:
+            raise SystemExit("Defina GOOGLE_TTS_API_KEY (chave da API Cloud Text-to-Speech) para usar --voz google:NOME.")
+        corpo = {
+            "input": {"text": texto},
+            "voice": {"languageCode": "pt-BR", "name": f"pt-BR-Chirp3-HD-{nome}"},
+            "audioConfig": {"audioEncoding": "LINEAR16", "sampleRateHertz": SR},
+        }
+        req = urllib.request.Request(
+            "https://texttospeech.googleapis.com/v1/text:synthesize",
+            data=json.dumps(corpo).encode(),
+            headers={"Content-Type": "application/json", "X-Goog-Api-Key": chave},
+        )
+        with urllib.request.urlopen(req, timeout=60) as r:
+            arq.write_bytes(base64.b64decode(json.load(r)["audioContent"]))
+    destino.write_bytes(arq.read_bytes())
+
+
 def falar(texto: str, voz: str, destino: Path) -> np.ndarray:
-    subprocess.run(
-        ["espeak-ng", "-v", voz, "-s", "158", "-p", "45", "-w", str(destino), texto],
-        check=True, capture_output=True,
-    )
+    if voz.startswith("google:"):
+        falar_google(texto, voz.split(":", 1)[1], destino)
+    else:
+        subprocess.run(
+            ["espeak-ng", "-v", voz, "-s", "158", "-p", "45", "-w", str(destino), texto],
+            check=True, capture_output=True,
+        )
     with wave.open(str(destino)) as w:
         sr = w.getframerate()
         dados = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768
@@ -521,7 +555,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--fontes", type=Path, required=True)
     ap.add_argument("--saida", type=Path, required=True)
-    ap.add_argument("--voz", default="mb-br3")
+    ap.add_argument("--voz", default="mb-br3",
+                    help="mb-br3 (sintetizador local) ou google:NOME, ex.: google:Vindemiatrix (voz Chirp 3 HD, precisa de GOOGLE_TTS_API_KEY)")
     ap.add_argument("--so", help="gera só o quiz com este id")
     ap.add_argument("--fundo", choices=["tinta", "branco"], default="tinta")
     ap.add_argument("--estilo", choices=["classico", "tema"], default="classico",

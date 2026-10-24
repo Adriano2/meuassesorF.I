@@ -1,0 +1,412 @@
+[
+  {
+    "id": "pcmso",
+    "pilar": "enfermagem",
+    "ref": "NR-7",
+    "titulo": "PCMSO: o que é e quem faz",
+    "sub": "Programa de Controle Médico de Saúde Ocupacional",
+    "slides": [
+      {
+        "t": "O que é",
+        "i": [
+          "Programa da NR-7 que acompanha a saúde dos trabalhadores",
+          "Planejado a partir dos riscos do PGR",
+          "Foco em prevenção e detecção precoce"
+        ]
+      },
+      {
+        "t": "Quem responde",
+        "i": [
+          "A empresa garante a elaboração e a execução",
+          "Um médico responsável coordena o programa",
+          "A enfermagem do trabalho apoia exames, registros e campanhas"
+        ]
+      },
+      {
+        "t": "Exames previstos",
+        "i": [
+          "Admissional",
+          "Periódico",
+          "Retorno ao trabalho",
+          "Mudança de risco ocupacional",
+          "Demissional"
+        ]
+      },
+      {
+        "t": "Erros comuns",
+        "alerta": true,
+        "i": [
+          "PCMSO copiado de outra empresa, sem ligação com o PGR",
+          "Exame complementar sem relação com o risco da função",
+          "Relatório analítico anual não feito"
+        ]
+      }
+    ],
+    "fonte": "NR-7 (Portaria SEPRT nº 6.734/2020).",
+    "legenda": "Seu PCMSO conversa com o PGR da empresa? 🩺\n\nO PCMSO é o programa da NR-7 que acompanha a saúde de quem trabalha. Ele parte dos riscos levantados no PGR: cada exame precisa ter motivo.\n\nNo carrossel:\n→ o que é o PCMSO\n→ quem responde por ele\n→ os 5 exames ocupacionais\n→ os erros que mais aparecem em auditoria\n\nSalve para consultar e mande para o RH da sua empresa.\n\nNa sua empresa, o PCMSO é revisado junto com o PGR? Conta aqui.",
+    "tags": "#tecenftrabalho #enfermagemdotrabalho #pcmso #nr7 #saudeocupacional",
+    "linha1": "PCMSO",
+    "linha2": "O QUE É E QUEM FAZ",
+    "icone": "prancheta",
+    "slogan": "Saúde começa antes do primeiro dia!"
+  },
+  {
+    "id": "pgr",
+    "pilar": "seguranca",
+    "ref": "NR-1",
+    "titulo": "O que é o PGR",
+    "sub": "Gerenciamento de Riscos Ocupacionais na prática",
+    "slides": [
+      {
+        "t": "O que é",
+        "i": [
+          "Programa que materializa o GRO da NR-1",
+          "Reúne inventário de riscos e plano de ação",
+          "Substituiu o PPRA em janeiro de 2022"
+        ]
+      },
+      {
+        "t": "Como funciona",
+        "i": [
+          "Identificar perigos",
+          "Avaliar riscos: severidade × probabilidade",
+          "Definir medidas de prevenção",
+          "Acompanhar e revisar"
+        ]
+      },
+      {
+        "t": "Quando revisar",
+        "i": [
+          "A cada 2 anos, no mínimo (3 anos com certificação em SST)",
+          "Mudança de processo, tecnologia ou ambiente",
+          "Após acidente ou doença relacionada ao trabalho",
+          "Quando a medida de controle não funcionar"
+        ]
+      },
+      {
+        "t": "Riscos psicossociais",
+        "i": [
+          "Entram no inventário de riscos do PGR",
+          "Exemplos: sobrecarga, metas abusivas, assédio",
+          "Exigência da Portaria MTE nº 1.419/2024"
+        ]
+      }
+    ],
+    "fonte": "NR-1, item 1.5 (Portarias SEPRT nº 6.730/2020 e MTE nº 1.419/2024).",
+    "legenda": "PGR não é um documento de gaveta. 🛡️\n\nO Programa de Gerenciamento de Riscos é a forma como a empresa cumpre o GRO da NR-1: identifica perigos, avalia riscos e define o que será feito, com prazo e responsável.\n\nArraste para ver:\n→ as 4 etapas do PGR\n→ quando a avaliação precisa ser revista\n→ onde entram os riscos psicossociais\n\nSalve e compartilhe com quem cuida de SST na sua empresa.\n\nO PGR da sua empresa tem plano de ação com responsável e prazo? Comenta.",
+    "tags": "#tecenftrabalho #segurancadotrabalho #pgr #nr1 #sst",
+    "linha1": "O QUE É",
+    "linha2": "O PGR",
+    "icone": "escudo",
+    "slogan": "Prevenir é cuidar de quem trabalha!"
+  },
+  {
+    "id": "brigada",
+    "pilar": "bombeiro",
+    "ref": "NR-23 · NBR 14276",
+    "titulo": "Brigada de emergência",
+    "sub": "Quem age nos primeiros minutos",
+    "slides": [
+      {
+        "t": "O que é",
+        "i": [
+          "Grupo de funcionários treinados da própria empresa",
+          "Atua até a chegada do Corpo de Bombeiros",
+          "Brigadista e bombeiro civil não são a mesma coisa"
+        ]
+      },
+      {
+        "t": "O que a brigada faz",
+        "i": [
+          "Combate ao princípio de incêndio",
+          "Primeiros socorros",
+          "Abandono de área e controle de pânico",
+          "Aciona o 193 e apoia as equipes"
+        ]
+      },
+      {
+        "t": "Base legal",
+        "i": [
+          "NR-23: medidas de prevenção conforme a legislação estadual",
+          "Instrução Técnica do Corpo de Bombeiros do seu estado",
+          "ABNT NBR 14276: dimensionamento e treinamento"
+        ]
+      },
+      {
+        "t": "Brigadista × bombeiro civil",
+        "i": [
+          "Brigadista: tem outra função e é treinado para emergências",
+          "Bombeiro civil: profissão regulamentada pela Lei 11.901/2009, com dedicação exclusiva"
+        ]
+      }
+    ],
+    "fonte": "NR-23; ABNT NBR 14276; Lei nº 11.901/2009.",
+    "legenda": "Se começar um incêndio agora, quem age primeiro na sua empresa? 🔥\n\nA brigada de emergência é formada por funcionários treinados para combater o princípio de incêndio, prestar primeiros socorros e conduzir o abandono de área até o Corpo de Bombeiros chegar.\n\nNo carrossel você vê o que a brigada faz, a base legal e a diferença entre brigadista e bombeiro civil.\n\nEmergência: Bombeiros 193 · SAMU 192.\n\nVocê é brigadista ou bombeiro civil? Conta nos comentários.",
+    "tags": "#tecenftrabalho #bombeirocivil #brigadadeincendio #nr23 #prevencaodeincendio",
+    "linha1": "BRIGADA DE",
+    "linha2": "EMERGÊNCIA",
+    "icone": "extintor",
+    "slogan": "Nos primeiros minutos, cada segundo conta!"
+  },
+  {
+    "id": "aso",
+    "pilar": "enfermagem",
+    "ref": "NR-7",
+    "titulo": "ASO sem erro",
+    "sub": "Atestado de Saúde Ocupacional",
+    "slides": [
+      {
+        "t": "O que é",
+        "i": [
+          "Atestado emitido pelo médico após cada exame ocupacional",
+          "Conclui: apto ou inapto para a função",
+          "O trabalhador tem direito a receber o ASO"
+        ]
+      },
+      {
+        "t": "O que precisa constar",
+        "i": [
+          "Nome, CPF e função",
+          "Riscos ocupacionais da função, ou ausência deles",
+          "Exames realizados e datas",
+          "Conclusão de aptidão",
+          "Nome e CRM do médico, data e assinatura"
+        ]
+      },
+      {
+        "t": "Erros frequentes",
+        "alerta": true,
+        "i": [
+          "ASO sem os riscos da função",
+          "Periódico vencido",
+          "Retorno ao trabalho não feito após afastamento de 30 dias ou mais",
+          "Dados diferentes do evento S-2220 no eSocial"
+        ]
+      }
+    ],
+    "fonte": "NR-7, item 7.5.19; leiaute eSocial S-2220.",
+    "legenda": "Seu ASO passaria numa auditoria? 📄\n\nO Atestado de Saúde Ocupacional fecha cada exame do PCMSO. Faltou o risco da função ou a data do exame, o documento perde força.\n\nArraste para ver o que a NR-7 exige no ASO e os erros que mais aparecem, inclusive na conferência com o S-2220 do eSocial.\n\nSalve para usar como checklist.\n\nQual erro de ASO você já encontrou? Comenta.",
+    "tags": "#tecenftrabalho #enfermagemdotrabalho #aso #nr7 #esocial",
+    "linha1": "ASO",
+    "linha2": "SEM ERRO",
+    "icone": "prancheta",
+    "slogan": "Documento certo protege o trabalhador!"
+  },
+  {
+    "id": "sesmt",
+    "pilar": "seguranca",
+    "ref": "NR-4",
+    "titulo": "SESMT: quem faz parte",
+    "sub": "Serviço Especializado em Segurança e Medicina do Trabalho",
+    "slides": [
+      {
+        "t": "O que é",
+        "i": [
+          "Equipe da empresa dedicada a saúde e segurança",
+          "Regulamentado pela NR-4",
+          "Missão: prevenir acidentes e doenças do trabalho"
+        ]
+      },
+      {
+        "t": "Quem compõe",
+        "i": [
+          "Engenheiro de Segurança do Trabalho",
+          "Técnico de Segurança do Trabalho",
+          "Médico do Trabalho",
+          "Enfermeiro do Trabalho",
+          "Técnico ou Auxiliar de Enfermagem do Trabalho"
+        ]
+      },
+      {
+        "t": "Como dimensionar",
+        "i": [
+          "Grau de risco da atividade (1 a 4)",
+          "Número de empregados do estabelecimento",
+          "Tabela do Anexo II da NR-4",
+          "Ex.: grau de risco 3, a partir de 101 empregados, já exige técnico de segurança"
+        ]
+      }
+    ],
+    "fonte": "NR-4, Anexo II (Portaria MTP nº 2.318/2022).",
+    "legenda": "Sua empresa precisa de SESMT? 👷\n\nO SESMT é a equipe interna de saúde e segurança prevista na NR-4. O tamanho dela depende do grau de risco da atividade e do número de empregados.\n\nArraste para ver quem compõe o SESMT e como fazer o dimensionamento.\n\nSalve e compartilhe com o RH.\n\nVocê faz parte de um SESMT? Qual a sua função? Comenta.",
+    "tags": "#tecenftrabalho #segurancadotrabalho #sesmt #nr4 #sst",
+    "linha1": "SESMT",
+    "linha2": "QUEM FAZ PARTE",
+    "icone": "capacete",
+    "slogan": "Equipe certa, trabalho mais seguro!"
+  },
+  {
+    "id": "extintores",
+    "pilar": "bombeiro",
+    "ref": "NBR 12693",
+    "titulo": "Qual extintor usar",
+    "sub": "Classes de incêndio A, B, C, D e K",
+    "slides": [
+      {
+        "t": "Classe A · sólidos",
+        "i": [
+          "Papel, madeira, tecido, plástico",
+          "Use: água, espuma ou pó ABC"
+        ]
+      },
+      {
+        "t": "Classe B · líquidos",
+        "i": [
+          "Gasolina, álcool, óleo, solventes",
+          "Use: CO2, pó BC/ABC ou espuma",
+          "Nunca jato de água"
+        ]
+      },
+      {
+        "t": "Classe C · energizados",
+        "alerta": true,
+        "i": [
+          "Painéis, motores, equipamentos ligados",
+          "Use: CO2 ou pó BC/ABC",
+          "Nunca água ou espuma: risco de choque"
+        ]
+      },
+      {
+        "t": "Classes D e K",
+        "i": [
+          "D: metais combustíveis (magnésio, titânio). Agente específico",
+          "K: óleo e gordura de cozinha. Extintor classe K"
+        ]
+      }
+    ],
+    "fonte": "ABNT NBR 12693 (sistemas de proteção por extintores).",
+    "legenda": "Usar o extintor errado pode piorar o incêndio. 🧯\n\nCada classe de incêndio pede um agente extintor. Água em equipamento energizado, por exemplo, expõe quem está combatendo ao choque elétrico.\n\nArraste e veja qual extintor usar nas classes A, B, C, D e K.\n\nSalve e confira se os extintores da sua empresa batem com o risco do local.\n\nEmergência: Bombeiros 193.",
+    "tags": "#tecenftrabalho #bombeirocivil #extintor #prevencaodeincendio #brigadadeincendio",
+    "linha1": "QUAL EXTINTOR",
+    "linha2": "USAR",
+    "icone": "extintor",
+    "slogan": "Equipamento certo, vida protegida!"
+  },
+  {
+    "id": "ltcat",
+    "pilar": "seguranca",
+    "ref": "Lei 8.213/91",
+    "titulo": "LTCAT, PPP e S-2240",
+    "sub": "O caminho da exposição até a aposentadoria especial",
+    "slides": [
+      {
+        "t": "O que é o LTCAT",
+        "i": [
+          "Laudo técnico das condições ambientais do trabalho",
+          "Avalia exposição a agentes nocivos",
+          "Base para a aposentadoria especial"
+        ]
+      },
+      {
+        "t": "Quem assina",
+        "i": [
+          "Médico do Trabalho ou Engenheiro de Segurança do Trabalho",
+          "Lei 8.213/91, art. 58, § 1º"
+        ]
+      },
+      {
+        "t": "Ligação com PPP e eSocial",
+        "i": [
+          "O LTCAT embasa o PPP",
+          "As exposições vão para o eSocial no evento S-2240",
+          "Laudo diferente do S-2240 gera passivo previdenciário"
+        ]
+      }
+    ],
+    "fonte": "Lei nº 8.213/1991, art. 58; leiaute eSocial S-2240.",
+    "legenda": "O LTCAT da sua empresa bate com o S-2240? 📑\n\nO laudo técnico das condições ambientais do trabalho comprova a exposição a agentes nocivos. Ele embasa o PPP e as informações enviadas ao eSocial.\n\nArraste para ver quem assina o LTCAT e como ele se liga ao PPP e ao S-2240.\n\nSalve para a próxima auditoria.",
+    "tags": "#tecenftrabalho #segurancadotrabalho #ltcat #ppp #esocial",
+    "linha1": "LTCAT, PPP",
+    "linha2": "E S-2240",
+    "icone": "prancheta",
+    "slogan": "Laudo e eSocial precisam bater!"
+  },
+  {
+    "id": "socorros",
+    "pilar": "bombeiro",
+    "ref": "Diretrizes AHA",
+    "titulo": "Primeiros socorros no trabalho",
+    "sub": "O que fazer até o socorro chegar",
+    "slides": [
+      {
+        "t": "1. Cena segura",
+        "i": [
+          "Avalie os riscos antes de se aproximar",
+          "Use luvas se houver sangue"
+        ]
+      },
+      {
+        "t": "2. Chame ajuda",
+        "i": [
+          "SAMU 192",
+          "Bombeiros 193",
+          "Peça o DEA (desfibrilador), se houver"
+        ]
+      },
+      {
+        "t": "3. Não respira?",
+        "i": [
+          "Compressões no centro do peito",
+          "100 a 120 por minuto, 5 a 6 cm de profundidade",
+          "Sem treino em ventilação: faça só compressões"
+        ]
+      },
+      {
+        "t": "Não faça",
+        "alerta": true,
+        "i": [
+          "Mover vítima com suspeita de trauma na coluna",
+          "Dar água a vítima inconsciente",
+          "Retirar objetos cravados"
+        ]
+      }
+    ],
+    "fonte": "Diretrizes da American Heart Association para RCP.",
+    "legenda": "Você saberia o que fazer nos primeiros minutos? 🚑\n\nUm mal súbito ou acidente pode acontecer em qualquer setor. Saber os primeiros passos faz diferença até o SAMU chegar.\n\nArraste: cena segura, chamar ajuda, RCP e o que não fazer.\n\nSAMU 192 · Bombeiros 193.\n\nSalve: pode ser útil quando você menos esperar.",
+    "tags": "#tecenftrabalho #primeirossocorros #rcp #bombeirocivil #brigadadeincendio",
+    "linha1": "PRIMEIROS SOCORROS",
+    "linha2": "NO TRABALHO",
+    "icone": "kit",
+    "slogan": "Conhecimento também salva vidas!"
+  },
+  {
+    "id": "tecnico",
+    "pilar": "enfermagem",
+    "ref": "Lei 7.498/86",
+    "titulo": "O que faz o técnico de enfermagem do trabalho",
+    "sub": "Rotina, prevenção e limites da função",
+    "slides": [
+      {
+        "t": "No dia a dia",
+        "i": [
+          "Apoio aos exames ocupacionais",
+          "Sinais vitais, acuidade visual e coletas",
+          "Prontuários e agenda dos periódicos"
+        ]
+      },
+      {
+        "t": "Na prevenção",
+        "i": [
+          "Campanhas de vacinação e saúde",
+          "Atendimento de primeiros socorros",
+          "Registro de atendimentos no ambulatório"
+        ]
+      },
+      {
+        "t": "Limites da função",
+        "i": [
+          "Atua sob supervisão do enfermeiro (Lei 7.498/86)",
+          "Não emite ASO nem diagnóstico",
+          "Registra tudo em prontuário"
+        ]
+      }
+    ],
+    "fonte": "Lei nº 7.498/1986 e Decreto nº 94.406/1987.",
+    "legenda": "O que faz um técnico de enfermagem dentro da empresa? 💙\n\nDo periódico à campanha de vacinação, o técnico de enfermagem do trabalho está na linha de frente da saúde ocupacional, sempre sob supervisão do enfermeiro.\n\nArraste para ver a rotina, o papel na prevenção e os limites da função.\n\nVocê trabalha ou quer trabalhar na área? Comenta.",
+    "tags": "#tecenftrabalho #enfermagemdotrabalho #tecnicodeenfermagem #saudeocupacional #sesmt",
+    "linha1": "TÉCNICO DE",
+    "linha2": "ENFERMAGEM DO TRABALHO",
+    "icone": "kit",
+    "slogan": "Cuidar também é prevenir!"
+  }
+]

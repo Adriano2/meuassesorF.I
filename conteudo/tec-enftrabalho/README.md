@@ -8,6 +8,8 @@ Não faz parte da plataforma; fica aqui só para versionar os geradores.
 | `quiz.json` | Perguntas do Quiz 5s, com texto de tela, texto de narração e fonte normativa |
 | `gerar_quiz.py` | Renderiza os Reels 1080×1920 com narração em pt-BR, contagem de 5 s e resposta. `--estilo tema` gera a versão com ilustração, cartão de pergunta e caixa verde de resposta (fundo branco) |
 | `gerar_logo.py` | Gera os PNGs finais do logo (selo escolhido: perfil, transparente e horizontal) |
+| `gerar_carrossel.py` | Gera os slides dos carrosséis (1080×1350, fundo branco) a partir de `carrosseis.json`, no mesmo estilo dos quizzes |
+| `amostras_voz.py` | Gera a mesma frase em 4 vozes femininas Chirp 3 HD para escolher |
 | `opcoes_logo.py` | Gera os quatro conceitos de logo e a prancha comparativa em `logo-opcoes/` |
 
 ## Dependências
@@ -29,3 +31,13 @@ python3 opcoes_logo.py --fontes ./fontes --saida ./logo-opcoes
 ```
 
 Antes de publicar uma pergunta nova, confira a norma citada em `explicacao`.
+
+## Voz neural (Google Chirp 3 HD, pt-BR)
+
+```bash
+export GOOGLE_TTS_API_KEY=...   # chave da API Cloud Text-to-Speech; nunca vai para o repositório
+python3 amostras_voz.py --saida ./amostras
+python3 gerar_quiz.py --fontes ./fontes --saida ./videos --estilo tema --voz google:Vindemiatrix
+```
+
+Cada trecho fica em cache (`~/.cache/tec-enftrabalho-tts`), então refazer um vídeo não gera nova cobrança.
