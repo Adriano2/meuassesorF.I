@@ -101,11 +101,14 @@ def opcao_selo(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.I
     R = S * .44
     aro = S * .03  # anel vermelho externo: bombeiro civil
     d.ellipse([cx - R - aro, cy - R - aro, cx + R + aro, cy + R + aro], fill=VERMELHO)
-    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=TINTA)
+    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=AZUL)  # faixa azul (mesmo tom do conceito do capacete)
     ri = R * .66
     d.ellipse([cx - ri - S * .012, cy - ri - S * .012, cx + ri + S * .012, cy + ri + S * .012], fill=AMARELO)
-    d.ellipse([cx - ri, cy - ri, cx + ri, cy + ri], fill=BRANCO)
+    d.ellipse([cx - ri, cy - ri, cx + ri, cy + ri], fill=VERDE)  # verde: segurança
     u = ri * .34
+    b = u * .14  # contorno branco para a cruz vermelha não vibrar contra o verde
+    d.rounded_rectangle([cx - u / 2 - b, cy - u * 1.5 - b, cx + u / 2 + b, cy + u * 1.5 + b], radius=u * .2, fill=BRANCO)
+    d.rounded_rectangle([cx - u * 1.5 - b, cy - u / 2 - b, cx + u * 1.5 + b, cy + u / 2 + b], radius=u * .2, fill=BRANCO)
     # cruz vermelha: escolha do titular do perfil, ciente de que é emblema protegido (Lei 2.380/1910)
     d.rounded_rectangle([cx - u / 2, cy - u * 1.5, cx + u / 2, cy + u * 1.5], radius=u * .15, fill=VERMELHO)
     d.rounded_rectangle([cx - u * 1.5, cy - u / 2, cx + u * 1.5, cy + u / 2], radius=u * .15, fill=VERMELHO)

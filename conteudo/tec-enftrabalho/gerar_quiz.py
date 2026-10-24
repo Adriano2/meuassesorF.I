@@ -143,7 +143,7 @@ class Cena:
         m = self.f.selo(110)
         img.paste(m, (64, 134), m)
         d.text((190, 148), "@tec.enftrabalho", font=self.f.get("Barlow_700Bold", 44), fill=BRANCO)
-        d.text((190, 202), "Enfermagem · Segurança · Bombeiro", font=self.f.get("Barlow_500Medium", 30), fill=NEVOA)
+        d.text((190, 202), "Enfermagem · Segurança · Bombeiro Civil", font=self.f.get("Barlow_500Medium", 30), fill=NEVOA)
         # chip do pilar + selo QUIZ 5s
         fchip = self.f.get("BarlowCondensed_700Bold", 34)
         lw = int(d.textlength(self.rotulo, font=fchip)) + 48
