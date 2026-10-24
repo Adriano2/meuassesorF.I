@@ -1,5 +1,495 @@
 [
   {
+    "id": "acidente-agulha",
+    "pilar": "enfermagem",
+    "titulo": "Acidente com agulha no trabalho",
+    "legenda": "Uma agulha descartada no lixo comum. Um auxiliar de limpeza ferido. O que fazer nos primeiros minutos? 💉\n\nNesta história você vê o passo a passo de um acidente com material biológico: lavar, comunicar, buscar atendimento rápido e registrar.\n\nA profilaxia, quando indicada, tem prazo: idealmente em até 2 horas e no máximo em 72 horas.\n\nSalve e compartilhe com a equipe de limpeza e de saúde da sua empresa.\n\n#tecenftrabalho #biosseguranca #enfermagemdotrabalho #nr32 #saudeocupacional",
+    "fonte": "NR-32; Protocolo Clínico de Profilaxia Pós-Exposição (PEP) do Ministério da Saúde; notificação compulsória no SINAN.",
+    "slides": [
+      {
+        "tipo": "capa",
+        "foco": [
+          0.7,
+          0.4
+        ],
+        "escurecer": "esquerda",
+        "cena": "Close-up portrait of the protagonist from the chest up, wearing blue nitrile gloves, holding up a yellow rigid sharps disposal box (plain, no label), serious caring expression looking at the camera. Background: a company first-aid room (ambulatório) softly out of focus, cool navy tones. The woman fills the right 60 percent of the frame; the left 40 percent and the top are darker uncluttered background for a title.",
+        "titulo": [
+          "Acidente",
+          "com agulha",
+          "no trabalho"
+        ],
+        "tamanhos": [
+          150,
+          150,
+          92
+        ],
+        "pincel": [
+          "Os primeiros minutos",
+          "fazem diferença!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Prevenção"
+          ],
+          [
+            "coracao",
+            "Saúde"
+          ],
+          [
+            "prancheta",
+            "Biossegurança"
+          ]
+        ]
+      },
+      {
+        "tipo": "cena",
+        "numero": 1,
+        "titulo": "O que aconteceu?",
+        "foco": [
+          0.5,
+          0.6
+        ],
+        "escurecer": "topo",
+        "cena": "Wide scene in a company corridor next to the first-aid room: a male cleaning worker in a gray uniform and yellow rubber gloves holds his injured hand in pain, a black garbage bag on the floor with a small syringe needle sticking out. The protagonist in white uniform walks quickly toward him with a concerned expression. Leave the upper right area empty for a speech bubble.",
+        "balao": {
+          "texto": "Ao recolher o lixo do ambulatório, um auxiliar de limpeza foi ferido por uma agulha descartada no saco comum.",
+          "x": 560,
+          "y": 120,
+          "w": 480,
+          "cauda": [
+            470,
+            420
+          ]
+        },
+        "pincel": {
+          "linhas": [
+            "Agulha usada é",
+            "risco biológico!"
+          ],
+          "x": 560,
+          "y": 500
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 2,
+        "titulo": "Primeira conduta",
+        "foco": [
+          0.65,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot at a stainless steel sink: the cleaning worker washes his finger with running water and soap while the protagonist, wearing gloves, stands beside him calmly guiding him with one hand on his shoulder. The two are on the right half of the frame; the left side is calm clinic wall background for a card.",
+        "cartao_check": {
+          "titulo": "Faça agora:",
+          "itens": [
+            "Lave com água e sabão",
+            "Não esprema o local",
+            "Mucosa: água ou soro",
+            "Avise a chefia"
+          ],
+          "x": 36,
+          "y": 360,
+          "w": 430
+        },
+        "balao": {
+          "texto": "Calma. Vamos lavar o local e seguir o protocolo de acidente com material biológico.",
+          "x": 560,
+          "y": 300,
+          "w": 470,
+          "cauda": [
+            700,
+            520
+          ]
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 3,
+        "titulo": "Atendimento rápido",
+        "foco": [
+          0.4,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot inside the first-aid room: the protagonist sits at a desk with the worker, holding a phone to her ear with a focused expression while checking a wall clock (clock face without numbers). The two occupy the left 60 percent of the frame; the right side is plain soft-focus wall for an information card.",
+        "balao": {
+          "texto": "Vou te acompanhar até o serviço de referência agora.",
+          "x": 36,
+          "y": 860,
+          "w": 440,
+          "cauda": [
+            240,
+            1010
+          ]
+        },
+        "cartao_icones": {
+          "itens": [
+            [
+              "alerta",
+              "Quando indicada, a profilaxia deve começar em até 2 horas, no máximo em 72 horas"
+            ],
+            [
+              "pessoas",
+              "Avalie o paciente-fonte, quando possível e com consentimento"
+            ],
+            [
+              "check",
+              "Siga para o serviço de referência indicado pela empresa"
+            ]
+          ],
+          "x": 600,
+          "y": 200,
+          "w": 440
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 4,
+        "titulo": "E depois?",
+        "foco": [
+          0.45,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot: the protagonist stands at a desk filling out a form on a clipboard (blank paper, no writing) and talks kindly to the worker, who is seated and seen from the side. Calm office lighting. The protagonist is on the left with empty space above her for a speech bubble.",
+        "balao": {
+          "texto": "O caso é registrado e você fará o acompanhamento com exames pelos próximos meses, conforme o protocolo.",
+          "x": 300,
+          "y": 240,
+          "w": 500,
+          "cauda": [
+            200,
+            600
+          ]
+        },
+        "barra": {
+          "icone": "prancheta",
+          "texto": "Emita a CAT, registre no prontuário e notifique no SINAN."
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 5,
+        "titulo": "Lembre-se!",
+        "foco": [
+          0.5,
+          0.5
+        ],
+        "escurecer": "geral",
+        "cena": "Empty, clean company first-aid room softly blurred: examination table, cabinets and a yellow rigid sharps container on the counter, cool navy and white tones, no people, no text, no signs.",
+        "cartao_icones": {
+          "itens": [
+            [
+              "proibido",
+              "Nunca reencape agulhas (NR-32)."
+            ],
+            [
+              "alerta",
+              "Descarte só em caixa coletora rígida."
+            ],
+            [
+              "check",
+              "Vacina contra hepatite B em dia."
+            ]
+          ],
+          "x": 60,
+          "y": 250,
+          "w": 960,
+          "grande": true
+        },
+        "pincel": {
+          "linhas": [
+            "Biossegurança é",
+            "cuidado com todos!"
+          ],
+          "x": 200,
+          "y": 1000
+        },
+        "rodape_texto": "Acidentou? Comunique na hora."
+      },
+      {
+        "tipo": "final",
+        "foco": [
+          0.35,
+          0.4
+        ],
+        "cena": "Portrait of the protagonist from the chest up, in white nursing uniform with stethoscope, wearing blue gloves and holding a yellow sharps container against her side, gentle confident look toward the camera. Solid dark navy blue background with a very subtle texture, the woman on the left 55 percent of the frame, empty space on the right.",
+        "frase": [
+          "Proteger também",
+          "é cuidar!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Segurança"
+          ],
+          [
+            "coracao",
+            "Saúde"
+          ],
+          [
+            "folha",
+            "Qualidade de vida"
+          ],
+          [
+            "capacete",
+            "Trabalho seguro"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "incendio-painel",
+    "pilar": "bombeiro",
+    "titulo": "Princípio de incêndio no painel elétrico",
+    "legenda": "Fumaça saindo do quadro elétrico. Você saberia o que fazer? 🔥\n\nNesta história, a nossa bombeira civil mostra como agir num princípio de incêndio em equipamento energizado: alarme, avaliação, extintor certo e abandono de área se o fogo não ceder.\n\nÁgua em equipamento energizado, nunca.\n\nEmergência: Bombeiros 193.\n\nSalve e marque quem faz parte da brigada da sua empresa.\n\n#tecenftrabalho #bombeirocivil #brigadadeincendio #prevencaodeincendio #nr23",
+    "fonte": "NR-23; ABNT NBR 12693 (sistemas de proteção por extintores); ABNT NBR 14276 (brigada de incêndio).",
+    "slides": [
+      {
+        "tipo": "capa",
+        "foco": [
+          0.7,
+          0.4
+        ],
+        "escurecer": "esquerda",
+        "cena": "Close-up portrait of the protagonist from the chest up, wearing a red civil firefighter jacket with yellow reflective stripes (no text, no logos) over her white uniform, holding a red CO2 fire extinguisher with a black horn nozzle, determined look at the camera. Industrial production hall behind her with light gray smoke, out of focus. The woman fills the right 60 percent of the frame; the left 40 percent and the top are darker uncluttered background for a title.",
+        "titulo": [
+          "Princípio",
+          "de incêndio",
+          "no painel elétrico"
+        ],
+        "tamanhos": [
+          150,
+          150,
+          84
+        ],
+        "pincel": [
+          "Aja certo nos",
+          "primeiros minutos!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Prevenção"
+          ],
+          [
+            "capacete",
+            "Segurança"
+          ],
+          [
+            "coracao",
+            "Vidas"
+          ]
+        ]
+      },
+      {
+        "tipo": "cena",
+        "numero": 1,
+        "titulo": "O que aconteceu?",
+        "foco": [
+          0.5,
+          0.6
+        ],
+        "escurecer": "topo",
+        "cena": "Wide scene in an industrial production hall: gray smoke and a small flame coming out of a gray metal electrical control panel on the wall, two workers in navy overalls stepping back and pointing at it, the protagonist in the red civil firefighter jacket running toward the scene. Leave the upper right area empty for a speech bubble.",
+        "balao": {
+          "texto": "Fumaça começou a sair do quadro elétrico do setor de produção durante o turno.",
+          "x": 560,
+          "y": 120,
+          "w": 480,
+          "cauda": [
+            470,
+            380
+          ]
+        },
+        "pincel": {
+          "linhas": [
+            "Cada segundo",
+            "conta!"
+          ],
+          "x": 620,
+          "y": 430
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 2,
+        "titulo": "Avaliação rápida",
+        "foco": [
+          0.65,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot: the protagonist in the red civil firefighter jacket presses a red manual fire alarm call point on the wall (plain, no text) while extending her other arm to keep workers away from the smoking panel in the background. She is on the right half of the frame; the left side is darker factory background for a card.",
+        "cartao_check": {
+          "titulo": "Antes de agir:",
+          "itens": [
+            "Acione o alarme",
+            "Fogo ainda no início?",
+            "Saída às suas costas",
+            "Distância segura"
+          ],
+          "x": 36,
+          "y": 360,
+          "w": 430
+        },
+        "balao": {
+          "texto": "Alarme acionado! Afastem-se do painel.",
+          "x": 600,
+          "y": 300,
+          "w": 420,
+          "cauda": [
+            760,
+            470
+          ]
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 3,
+        "titulo": "Combate seguro",
+        "foco": [
+          0.4,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Dynamic medium shot: the protagonist in the red civil firefighter jacket, wearing protective gloves, discharges a CO2 extinguisher with a black horn nozzle at the base of a small fire at the bottom of the electrical panel, white CO2 cloud, her back toward an open exit door. She occupies the left 60 percent of the frame; the right side is smoky dark background for an information card.",
+        "balao": {
+          "texto": "CO2 na base do fogo, com a saída às minhas costas.",
+          "x": 36,
+          "y": 880,
+          "w": 440,
+          "cauda": [
+            260,
+            1030
+          ]
+        },
+        "cartao_icones": {
+          "itens": [
+            [
+              "proibido",
+              "Nunca use água em equipamento energizado"
+            ],
+            [
+              "check",
+              "Use extintor de CO2 ou pó BC/ABC"
+            ],
+            [
+              "alerta",
+              "Desligue a energia só se for seguro"
+            ],
+            [
+              "pessoas",
+              "Combata com a rota de fuga às costas"
+            ]
+          ],
+          "x": 600,
+          "y": 190,
+          "w": 440
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 4,
+        "titulo": "E se não apagar?",
+        "foco": [
+          0.45,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot: the protagonist in the red civil firefighter jacket guides a calm line of workers along a marked emergency exit route toward an open exit door, a green emergency exit sign with only a running-man pictogram (no words). The protagonist is on the left with empty space above her for a speech bubble.",
+        "balao": {
+          "texto": "Se o fogo não ceder, abandone a área pela rota de fuga e ligue 193.",
+          "x": 300,
+          "y": 240,
+          "w": 480,
+          "cauda": [
+            200,
+            560
+          ]
+        },
+        "barra": {
+          "icone": "escudo",
+          "texto": "A brigada conduz todos ao ponto de encontro e confere quem saiu."
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 5,
+        "titulo": "Lembre-se!",
+        "foco": [
+          0.5,
+          0.5
+        ],
+        "escurecer": "geral",
+        "cena": "Empty industrial production hall softly blurred, a red fire extinguisher mounted on a wall bracket and a clear emergency route with yellow floor markings, cool navy tones, no people, no text, no signs.",
+        "cartao_icones": {
+          "itens": [
+            [
+              "alerta",
+              "Equipamento energizado: água, nunca."
+            ],
+            [
+              "check",
+              "Rotas de fuga e extintores sempre desobstruídos."
+            ],
+            [
+              "pessoas",
+              "Brigada treinada salva vidas."
+            ]
+          ],
+          "x": 60,
+          "y": 250,
+          "w": 960,
+          "grande": true
+        },
+        "pincel": {
+          "linhas": [
+            "Prevenir é o",
+            "melhor combate!"
+          ],
+          "x": 220,
+          "y": 1000
+        },
+        "rodape_texto": "Emergência: Bombeiros 193"
+      },
+      {
+        "tipo": "final",
+        "foco": [
+          0.35,
+          0.4
+        ],
+        "cena": "Portrait of the protagonist from the chest up, wearing the red civil firefighter jacket with yellow reflective stripes (no text) open over her white uniform, a gentle confident look toward the camera. Solid dark navy blue background with a very subtle texture, the woman on the left 55 percent of the frame, empty space on the right.",
+        "frase": [
+          "Segurança",
+          "é atitude!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Segurança"
+          ],
+          [
+            "coracao",
+            "Saúde"
+          ],
+          [
+            "folha",
+            "Qualidade de vida"
+          ],
+          [
+            "capacete",
+            "Trabalho seguro"
+          ]
+        ]
+      }
+    ]
+  },
+  {
     "id": "primeiros-socorros",
     "legenda": "Você saberia o que fazer nos primeiros minutos depois de um acidente no trabalho? 🚑\n\nNeste carrossel, uma queda na área de produção com suspeita de entorse de tornozelo mostra o passo a passo: avaliar, cuidar no local e encaminhar.\n\nEm caso grave, ligue SAMU 192 ou Bombeiros 193.\n\nPrimeiros socorros não substituem o atendimento médico, mas fazem diferença até ele chegar.\n\nSalve para consultar e compartilhe com quem trabalha com você.\n\n#tecenftrabalho #primeirossocorros #enfermagemdotrabalho #segurancadotrabalho #sst",
     "fonte": "Manual de primeiros socorros do Ministério da Saúde; Diretrizes da American Heart Association; NR-7.",
@@ -92,7 +582,7 @@
           ],
           "x": 36,
           "y": 360,
-          "w": 380
+          "w": 430
         },
         "balao": {
           "texto": "Mantenha a calma. Vou avaliar a gravidade da lesão e prestar os primeiros cuidados.",
@@ -144,9 +634,9 @@
               "Evite movimentar e não ofereça medicação sem orientação médica"
             ]
           ],
-          "x": 640,
+          "x": 600,
           "y": 180,
-          "w": 400
+          "w": 440
         }
       },
       {
@@ -244,6 +734,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "titulo": "Primeiros socorros no ambiente de trabalho",
+    "pilar": "bombeiro"
   }
 ]

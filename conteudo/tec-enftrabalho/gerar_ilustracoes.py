@@ -4,8 +4,9 @@ Uso (precisa de GEMINI_API_KEY, a chave do Google AI Studio):
     python3 gerar_ilustracoes.py --saida ./ilustracoes [--so primeiros-socorros] [--slide 3]
 
 Referências (ficam em referencias/, fora do git porque o repositório é público):
-    ref-foto.jpg        foto da titular, para manter o rosto
-    ref-ilustracao.png  ilustração de estilo, para manter o traço e as cores
+    ref-foto.jpg            foto da titular, para manter o rosto
+    ref-estilo-rosto.png    quadro de capa da série aprovada (rosto e traço)
+    ref-estilo.png          quadro de cena da série aprovada (cenário, cores, enquadramento)
 
 As imagens saem SEM texto: títulos, balões e cartões são desenhados depois por gerar_carrossel_ilustrado.py,
 com as fontes da marca, para não haver erro de português dentro da arte.
@@ -25,12 +26,19 @@ from pathlib import Path
 
 AQUI = Path(__file__).parent
 ESTILO = (
-    "Semi-realistic comic-book illustration with bold clean ink outlines, vivid saturated colors, detailed shading "
-    "and cinematic lighting, matching the style, line work and palette of the second reference image. "
-    "The woman must look like the person in the first reference photo: same face shape, light brown hair in a high bun, "
-    "light eyes, fair skin. Portrait aspect ratio 4:5. "
-    "IMPORTANT: the image must contain NO text, NO letters, NO numbers, NO logos and NO captions anywhere, "
-    "including on uniforms, patches, signs, screens and clipboards (leave them blank). Do not add frames or borders."
+    "Semi-realistic digital comic illustration with professional finish: clean defined ink outlines, cinematic lighting, "
+    "detailed shading, rich realistic professional environments with coherent workers and equipment. "
+    "Match exactly the art style, line work, rendering and color palette of the style reference images "
+    "(predominantly navy blue, yellow, white, and green for health and prevention elements). "
+    "PROTAGONIST (must be recognizable and identical in every image): the woman from the photo reference, "
+    "an occupational nursing professional: oval face, expressive light eyes, well-defined eyebrows, light brown hair with "
+    "golden highlights in a high bun with loose strands framing the face, fair skin. Default outfit: white short-sleeved "
+    "nursing uniform with a small plain green cross patch, stethoscope. Keep her face, hair and proportions consistent. "
+    "Correct anatomy (hands with five fingers), correct and realistic safety equipment. "
+    "Vertical 4:5 single image, one scene only (never a grid, comic page or multiple panels). "
+    "IMPORTANT: NO text, NO letters, NO numbers, NO logos, NO speech bubbles and NO captions anywhere in the image, "
+    "including uniforms, patches, signs, screens, labels and clipboards: leave them blank. Titles and dialogue are added "
+    "later by the designer, so keep the empty areas described in the scene clean. No frames or borders."
 )
 
 
@@ -45,7 +53,7 @@ def gerar_imagem(cena: str, refs: list[Path], destino: Path) -> None:
         raise SystemExit("Defina GEMINI_API_KEY (chave do Google AI Studio).")
     modelo = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
     corpo = {
-        "contents": [{"parts": [_parte_imagem(r) for r in refs] + [{"text": f"{ESTILO}\n\nScene: {cena}"}]}],
+        "contents": [{"parts": [_parte_imagem(r) for r in refs] + [{"text": f"Image 1 is the photo reference of the protagonist. Images 2 and 3 are the style references.\n{ESTILO}\n\nScene: {cena}"}]}],
         "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "4:5"}},
     }
     req = urllib.request.Request(
@@ -78,7 +86,7 @@ def main() -> None:
     ap.add_argument("--so", help="gera só este carrossel")
     ap.add_argument("--slide", type=int, help="gera só este slide (1, 2, ...)")
     a = ap.parse_args()
-    refs = [a.refs / "ref-foto.jpg", a.refs / "ref-ilustracao.png"]
+    refs = [a.refs / "ref-foto.jpg", a.refs / "ref-estilo-rosto.png", a.refs / "ref-estilo.png"]
     falta = [r.name for r in refs if not r.exists()]
     if falta:
         raise SystemExit(f"Faltam as referências em {a.refs}: {', '.join(falta)}")
