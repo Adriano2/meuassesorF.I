@@ -6,7 +6,7 @@ Não faz parte da plataforma; fica aqui só para versionar os geradores.
 | Arquivo | O que faz |
 |---|---|
 | `quiz.json` | Perguntas do Quiz 5s, com texto de tela, texto de narração e fonte normativa |
-| `gerar_quiz.py` | Renderiza os Reels 1080×1920 com narração em pt-BR, contagem de 5 s e resposta |
+| `gerar_quiz.py` | Renderiza os Reels 1080×1920 com narração em pt-BR, contagem de 5 s e resposta. `--estilo tema` gera a versão com ilustração, cartão de pergunta e caixa verde de resposta (fundo branco) |
 | `gerar_logo.py` | Gera os PNGs finais do logo (selo escolhido: perfil, transparente e horizontal) |
 | `opcoes_logo.py` | Gera os quatro conceitos de logo e a prancha comparativa em `logo-opcoes/` |
 

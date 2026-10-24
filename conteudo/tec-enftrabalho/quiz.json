@@ -4,65 +4,197 @@
     "pilar": "seguranca",
     "pergunta": "Qual NR trata do PGR, o Programa de Gerenciamento de Riscos?",
     "fala_pergunta": "Qual N R trata do pê gê erre, o Programa de Gerenciamento de Riscos?",
-    "opcoes": ["NR-7", "NR-1", "NR-9", "NR-15"],
-    "fala_opcoes": ["ene erre sete", "ene erre um", "ene erre nove", "ene erre quinze"],
+    "opcoes": [
+      "NR-7",
+      "NR-1",
+      "NR-9",
+      "NR-15"
+    ],
+    "fala_opcoes": [
+      "ene erre sete",
+      "ene erre um",
+      "ene erre nove",
+      "ene erre quinze"
+    ],
     "correta": 1,
     "explicacao": "O PGR faz parte do GRO, previsto na NR-1. A NR-7 trata do PCMSO.",
-    "fala_explicacao": "O pê gê erre faz parte do gerenciamento de riscos ocupacionais, previsto na ene erre um. A ene erre sete trata do pê cê eme ésse ó."
+    "fala_explicacao": "O pê gê erre faz parte do gerenciamento de riscos ocupacionais, previsto na ene erre um. A ene erre sete trata do pê cê eme ésse ó.",
+    "tema": {
+      "linha1": "GESTÃO DE",
+      "linha2": "RISCOS",
+      "sub": "Teste o que você sabe sobre o PGR e a NR-1!",
+      "icone": "capacete",
+      "dicas": [
+        "PGR faz parte do GRO.",
+        "Inventário + plano de ação.",
+        "Revise a cada 2 anos."
+      ],
+      "slogan": "Prevenir é cuidar de quem trabalha!"
+    }
   },
   {
     "id": "q02-admissional",
     "pilar": "enfermagem",
     "pergunta": "Qual exame ocupacional é feito antes de o trabalhador assumir a função?",
     "fala_pergunta": "Qual exame ocupacional é feito antes de o trabalhador assumir a função?",
-    "opcoes": ["Periódico", "Demissional", "Admissional", "Retorno ao trabalho"],
-    "fala_opcoes": ["periódico", "demissional", "admissional", "retorno ao trabalho"],
+    "opcoes": [
+      "Periódico",
+      "Demissional",
+      "Admissional",
+      "Retorno ao trabalho"
+    ],
+    "fala_opcoes": [
+      "periódico",
+      "demissional",
+      "admissional",
+      "retorno ao trabalho"
+    ],
     "correta": 2,
     "explicacao": "O admissional é feito antes do início das atividades, conforme a NR-7.",
-    "fala_explicacao": "O exame admissional é feito antes do início das atividades, conforme a ene erre sete."
+    "fala_explicacao": "O exame admissional é feito antes do início das atividades, conforme a ene erre sete.",
+    "tema": {
+      "linha1": "EXAMES",
+      "linha2": "OCUPACIONAIS",
+      "sub": "Você conhece os exames do PCMSO? Responda!",
+      "icone": "prancheta",
+      "dicas": [
+        "Admissional: antes de começar.",
+        "ASO: apto ou inapto.",
+        "Base: os riscos do PGR."
+      ],
+      "slogan": "Saúde começa antes do primeiro dia!"
+    }
   },
   {
     "id": "q03-extintor-eletrico",
     "pilar": "bombeiro",
     "pergunta": "Qual agente extintor NÃO deve ser usado em equipamento elétrico energizado?",
     "fala_pergunta": "Qual agente extintor não deve ser usado em equipamento elétrico energizado?",
-    "opcoes": ["CO₂", "Pó BC", "Pó ABC", "Água"],
-    "fala_opcoes": ["gás carbônico", "pó bê cê", "pó á bê cê", "água"],
+    "opcoes": [
+      "CO2",
+      "Pó BC",
+      "Pó ABC",
+      "Água"
+    ],
+    "fala_opcoes": [
+      "gás carbônico",
+      "pó bê cê",
+      "pó á bê cê",
+      "água"
+    ],
     "correta": 3,
-    "explicacao": "Água conduz eletricidade e expõe quem combate ao choque. Use CO₂ ou pó.",
-    "fala_explicacao": "A água conduz eletricidade e expõe quem está combatendo ao choque elétrico. Use gás carbônico ou pó."
+    "explicacao": "Água conduz eletricidade e expõe quem combate ao choque. Use CO2 ou pó.",
+    "fala_explicacao": "A água conduz eletricidade e expõe quem está combatendo ao choque elétrico. Use gás carbônico ou pó.",
+    "tema": {
+      "linha1": "EXTINTORES",
+      "linha2": "E FOGO",
+      "sub": "Escolher o agente errado piora o incêndio!",
+      "icone": "extintor",
+      "dicas": [
+        "Água conduz eletricidade.",
+        "Use CO2 ou pó.",
+        "Desligue a energia, se seguro."
+      ],
+      "slogan": "Equipamento certo, vida protegida!"
+    }
   },
   {
     "id": "q04-rcp-frequencia",
     "pilar": "bombeiro",
     "pergunta": "Na RCP em adulto, qual é a frequência de compressões por minuto?",
     "fala_pergunta": "Na reanimação cardiopulmonar em adulto, qual é a frequência de compressões por minuto?",
-    "opcoes": ["60 a 80", "80 a 100", "100 a 120", "130 a 150"],
-    "fala_opcoes": ["sessenta a oitenta", "oitenta a cem", "cem a cento e vinte", "cento e trinta a cento e cinquenta"],
+    "opcoes": [
+      "60 a 80",
+      "80 a 100",
+      "100 a 120",
+      "130 a 150"
+    ],
+    "fala_opcoes": [
+      "sessenta a oitenta",
+      "oitenta a cem",
+      "cem a cento e vinte",
+      "cento e trinta a cento e cinquenta"
+    ],
     "correta": 2,
     "explicacao": "Diretriz AHA: 100 a 120 por minuto, profundidade de 5 a 6 cm.",
-    "fala_explicacao": "Pela diretriz da A H A, são cem a cento e vinte compressões por minuto, com profundidade de cinco a seis centímetros."
+    "fala_explicacao": "Pela diretriz da A H A, são cem a cento e vinte compressões por minuto, com profundidade de cinco a seis centímetros.",
+    "tema": {
+      "linha1": "PRIMEIROS",
+      "linha2": "SOCORROS",
+      "sub": "Teste seus conhecimentos e saiba como agir em emergências!",
+      "icone": "kit",
+      "dicas": [
+        "Ligue 192 ou 193.",
+        "Compressões fortes e rápidas.",
+        "Use o DEA, se houver."
+      ],
+      "slogan": "Conhecimento também salva vidas!"
+    }
   },
   {
     "id": "q05-cor-incendio",
     "pilar": "seguranca",
     "pergunta": "Na sinalização de segurança, qual cor identifica equipamentos de combate a incêndio?",
     "fala_pergunta": "Na sinalização de segurança, qual cor identifica os equipamentos de combate a incêndio?",
-    "opcoes": ["Verde", "Azul", "Vermelho", "Amarelo"],
-    "fala_opcoes": ["verde", "azul", "vermelho", "amarelo"],
+    "opcoes": [
+      "Verde",
+      "Azul",
+      "Vermelho",
+      "Amarelo"
+    ],
+    "fala_opcoes": [
+      "verde",
+      "azul",
+      "vermelho",
+      "amarelo"
+    ],
     "correta": 2,
-    "explicacao": "Vermelho, pela ABNT NBR 7195. Verde indica segurança e primeiros socorros.",
-    "fala_explicacao": "Vermelho, pela norma da á bê ene tê sete um nove cinco. O verde indica segurança e primeiros socorros."
+    "explicacao": "Vermelho, conforme a NR-26. Verde indica segurança e primeiros socorros.",
+    "fala_explicacao": "Vermelho, conforme a ene erre vinte e seis. O verde indica segurança e primeiros socorros.",
+    "tema": {
+      "linha1": "SINALIZAÇÃO",
+      "linha2": "DE SEGURANÇA",
+      "sub": "Cada cor tem um significado. Você sabe qual é?",
+      "icone": "escudo",
+      "dicas": [
+        "Vermelho: combate a incêndio.",
+        "Verde: segurança.",
+        "A NR-26 define as cores."
+      ],
+      "slogan": "Cor certa, decisão rápida!"
+    }
   },
   {
     "id": "q06-prontuario-20-anos",
     "pilar": "enfermagem",
     "pergunta": "Por quanto tempo, no mínimo, o prontuário ocupacional é guardado após o desligamento?",
     "fala_pergunta": "Por quanto tempo, no mínimo, o prontuário ocupacional deve ser guardado após o desligamento?",
-    "opcoes": ["5 anos", "10 anos", "20 anos", "30 anos"],
-    "fala_opcoes": ["cinco anos", "dez anos", "vinte anos", "trinta anos"],
+    "opcoes": [
+      "5 anos",
+      "10 anos",
+      "20 anos",
+      "30 anos"
+    ],
+    "fala_opcoes": [
+      "cinco anos",
+      "dez anos",
+      "vinte anos",
+      "trinta anos"
+    ],
     "correta": 2,
     "explicacao": "A NR-7 exige guarda mínima de 20 anos após o desligamento.",
-    "fala_explicacao": "A ene erre sete exige guarda mínima de vinte anos após o desligamento do empregado."
+    "fala_explicacao": "A ene erre sete exige guarda mínima de vinte anos após o desligamento do empregado.",
+    "tema": {
+      "linha1": "PRONTUÁRIO",
+      "linha2": "OCUPACIONAL",
+      "sub": "Quanto tempo guardar os registros de saúde?",
+      "icone": "prancheta",
+      "dicas": [
+        "Guarde por 20 anos.",
+        "Prontuário é sigiloso.",
+        "Registre data e assinatura."
+      ],
+      "slogan": "Registro bem feito protege todos!"
+    }
   }
 ]
