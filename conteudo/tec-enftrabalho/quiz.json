@@ -232,5 +232,161 @@
       "Resposta certa: letra C, vinte anos. A NR sete exige guarda mínima de vinte anos após o desligamento do empregado.",
       "Acertou? Comenta aí e segue o perfil pra mais quizzes."
     ]
+  },
+  {
+    "id": "q07-pcr-reconhecer",
+    "pilar": "bombeiro",
+    "pergunta": "Qual destes sinais indica parada cardiorrespiratória?",
+    "fala_pergunta": "Qual destes sinais indica parada cardiorrespiratória?",
+    "opcoes": [
+      "Tontura, mas falando",
+      "Não responde e não respira normalmente",
+      "Dor de cabeça forte",
+      "Pressão alta"
+    ],
+    "fala_opcoes": [
+      "tontura, mas falando",
+      "não responde e não respira normalmente",
+      "dor de cabeça forte",
+      "pressão alta"
+    ],
+    "correta": 1,
+    "explicacao": "Sem resposta e sem respiração normal (ou só gasping): inicie a RCP e peça o DEA.",
+    "fala_explicacao": "Sem resposta e sem respiração normal, ou só respiração ofegante: inicie a R C P e peça o D E A.",
+    "tema": {
+      "linha1": "PARADA",
+      "linha2": "CARDIORRESPIRATÓRIA",
+      "sub": "Você reconheceria uma PCR no trabalho?",
+      "icone": "kit",
+      "dicas": [
+        "Ligue 192 e peça o DEA.",
+        "Gasping não é respirar.",
+        "Comece as compressões."
+      ],
+      "slogan": "Reconhecer rápido salva vidas!"
+    },
+    "roteiro": [
+      "Quiz de cinco segundos! Qual destes sinais indica parada cardiorrespiratória?",
+      "A, tontura, mas falando. B, não responde e não respira normalmente. C, dor de cabeça forte. D, pressão alta.",
+      "Resposta certa: letra B. Sem resposta e sem respiração normal, inicie a R C P e peça o D E A.",
+      "Acertou? Comenta aí e segue o perfil pra mais quizzes."
+    ]
+  },
+  {
+    "id": "q08-pcr-profundidade",
+    "pilar": "bombeiro",
+    "pergunta": "Na RCP em adulto, qual deve ser a profundidade das compressões?",
+    "fala_pergunta": "Na reanimação cardiopulmonar em adulto, qual deve ser a profundidade das compressões?",
+    "opcoes": [
+      "1 a 2 cm",
+      "3 a 4 cm",
+      "5 a 6 cm",
+      "8 a 10 cm"
+    ],
+    "fala_opcoes": [
+      "um a dois centímetros",
+      "três a quatro centímetros",
+      "cinco a seis centímetros",
+      "oito a dez centímetros"
+    ],
+    "correta": 2,
+    "explicacao": "Diretriz AHA: 5 a 6 cm, deixando o tórax voltar entre as compressões.",
+    "fala_explicacao": "Pela diretriz da A H A, cinco a seis centímetros, deixando o tórax voltar entre as compressões.",
+    "tema": {
+      "linha1": "RCP DE",
+      "linha2": "QUALIDADE",
+      "sub": "Compressão certa faz diferença!",
+      "icone": "kit",
+      "dicas": [
+        "Centro do peito.",
+        "100 a 120 por minuto.",
+        "Deixe o tórax voltar."
+      ],
+      "slogan": "Forte, rápido e sem parar!"
+    },
+    "roteiro": [
+      "Quiz de cinco segundos! Na R C P em adulto, qual deve ser a profundidade das compressões?",
+      "A, um a dois centímetros. B, três a quatro. C, cinco a seis. D, oito a dez.",
+      "Resposta certa: letra C, cinco a seis centímetros, deixando o tórax voltar entre as compressões.",
+      "Acertou? Comenta aí e segue o perfil pra mais quizzes."
+    ]
+  },
+  {
+    "id": "q09-quimico-olhos",
+    "pilar": "seguranca",
+    "pergunta": "Um produto químico atingiu os olhos. Qual é a primeira conduta?",
+    "fala_pergunta": "Um produto químico atingiu os olhos. Qual é a primeira conduta?",
+    "opcoes": [
+      "Pingar colírio",
+      "Lavar com água corrente em abundância",
+      "Esfregar os olhos",
+      "Usar outro produto para neutralizar"
+    ],
+    "fala_opcoes": [
+      "pingar colírio",
+      "lavar com água corrente em abundância",
+      "esfregar os olhos",
+      "usar outro produto para neutralizar"
+    ],
+    "correta": 1,
+    "explicacao": "Lave com água corrente por pelo menos 15 minutos, ou conforme a FDS, e procure atendimento.",
+    "fala_explicacao": "Lave com água corrente por pelo menos quinze minutos, ou conforme a ficha de segurança, e procure atendimento.",
+    "tema": {
+      "linha1": "PRODUTO",
+      "linha2": "QUÍMICO",
+      "sub": "Você saberia agir num acidente com químicos?",
+      "icone": "escudo",
+      "dicas": [
+        "Use o lava-olhos.",
+        "Nunca neutralize.",
+        "Leve a FDS ao atendimento."
+      ],
+      "slogan": "Informação também é proteção!"
+    },
+    "roteiro": [
+      "Quiz de cinco segundos! Um produto químico atingiu os olhos. Qual é a primeira conduta?",
+      "A, pingar colírio. B, lavar com água corrente em abundância. C, esfregar os olhos. D, usar outro produto para neutralizar.",
+      "Resposta certa: letra B. Lave com água corrente por pelo menos quinze minutos, ou conforme a ficha de segurança, e procure atendimento.",
+      "Acertou? Comenta aí e segue o perfil pra mais quizzes."
+    ]
+  },
+  {
+    "id": "q10-quimico-fds",
+    "pilar": "seguranca",
+    "pergunta": "Onde encontrar os primeiros socorros indicados para um produto químico?",
+    "fala_pergunta": "Onde encontrar os primeiros socorros indicados para um produto químico?",
+    "opcoes": [
+      "Na nota fiscal",
+      "Na FDS (ficha com dados de segurança)",
+      "No crachá do trabalhador",
+      "No ASO"
+    ],
+    "fala_opcoes": [
+      "na nota fiscal",
+      "na ficha com dados de segurança",
+      "no crachá do trabalhador",
+      "no A S O"
+    ],
+    "correta": 1,
+    "explicacao": "A FDS traz os primeiros socorros de cada produto (ABNT NBR 14725). Ela deve ficar acessível.",
+    "fala_explicacao": "A ficha com dados de segurança traz os primeiros socorros de cada produto, e deve ficar acessível.",
+    "tema": {
+      "linha1": "FICHA DE",
+      "linha2": "SEGURANÇA",
+      "sub": "Você sabe onde está a FDS dos produtos?",
+      "icone": "prancheta",
+      "dicas": [
+        "Leia antes de manusear.",
+        "Deixe a FDS acessível.",
+        "Siga o rótulo (NR-26)."
+      ],
+      "slogan": "Informação também é proteção!"
+    },
+    "roteiro": [
+      "Quiz de cinco segundos! Onde encontrar os primeiros socorros indicados para um produto químico?",
+      "A, na nota fiscal. B, na ficha com dados de segurança. C, no crachá do trabalhador. D, no A S O.",
+      "Resposta certa: letra B. A ficha com dados de segurança traz os primeiros socorros de cada produto.",
+      "Acertou? Comenta aí e segue o perfil pra mais quizzes."
+    ]
   }
 ]

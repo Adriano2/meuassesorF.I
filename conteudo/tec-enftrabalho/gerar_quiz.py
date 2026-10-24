@@ -532,7 +532,11 @@ class CenaTema:
             d.ellipse([108, y + 10, 176, y + 78], fill=(BR if acesa else NAVY) + (a,))
             lw = d.textlength(LETRAS[i], font=f_le)
             d.text((142 - lw / 2, y + 15), LETRAS[i], font=f_le, fill=(VERDE_OK if acesa else BR) + (a,))
-            d.text((208, y + 18), txt, font=f_op, fill=(BR if acesa else NAVY) + (a,))
+            fo, tam = f_op, 42
+            while tam > 30 and d.textlength(txt, font=fo) > W - 90 - 208 - 96:  # deixa espaço para o ✓
+                tam -= 2
+                fo = f.get("Barlow_600SemiBold", tam)
+            d.text((208, y + 18 + (42 - tam) // 2), txt, font=fo, fill=(BR if acesa else NAVY) + (a,))
             if certa and rev > 0:
                 cx, cy = W - 150, y + 44
                 d.line([(cx - 22, cy), (cx - 5, cy + 20), (cx + 26, cy - 20)], fill=BR + (int(255 * rev),), width=11, joint="curve")
@@ -578,9 +582,15 @@ class CenaTema:
 
 
 def gerar(q: dict, fontes: Fontes, voz: str, saida: Path, tmp: Path, estilo: str = "classico", num: int = 1, total: int = 1,
-          audios: Path | None = None) -> float:
+          audios: Path | None = None, narracao: bool = True) -> float:
     letra = LETRAS[q["correta"]]
-    if audios:
+    if not narracao:  # só bipes: o tempo de cada parte vem do tamanho do texto, para dar tempo de ler
+        silencio = lambda seg: np.zeros(int(seg * SR), dtype=np.float32)  # noqa: E731
+        v1 = silencio(1.0 + len(q["pergunta"]) * 0.055)
+        v2 = silencio(3.0)
+        v3 = silencio(max(4.0, len(q["explicacao"]) * 0.065))
+        v4 = silencio(2.5)
+    elif audios:
         gravados = [next(iter(sorted(audios.glob(f"{q['id']}-{n}.*"))), None) for n in range(1, 5)]
         v1, v2, v3, v4 = (carregar_gravacao(arq, tmp) for arq in gravados)
     else:
@@ -633,6 +643,7 @@ def main() -> None:
     ap.add_argument("--voz", default="mb-br3",
                     help="mb-br3 (sintetizador local); gemini:NOME (chave do AI Studio em GEMINI_API_KEY, ex.: gemini:Achernar); google:NOME (Chirp 3 HD, GOOGLE_TTS_API_KEY)")
     ap.add_argument("--so", help="gera só o quiz com este id")
+    ap.add_argument("--sem-narracao", action="store_true", help="sem voz: só a contagem com bipes")
     ap.add_argument("--audios", type=Path, help="pasta com as gravações da sua voz: {id}-1.m4a (pergunta), -2 (alternativas), -3 (resposta), -4 (fechamento)")
     ap.add_argument("--fundo", choices=["tinta", "branco"], default="tinta")
     ap.add_argument("--estilo", choices=["classico", "tema"], default="classico",
@@ -653,7 +664,7 @@ def main() -> None:
         if a.so and q["id"] != a.so:
             continue
         with tempfile.TemporaryDirectory() as tmp:
-            dur = gerar(q, fontes, a.voz, a.saida / f"{q['id']}{sufixo}.mp4", Path(tmp), a.estilo, num, len(quizzes), a.audios)
+            dur = gerar(q, fontes, a.voz, a.saida / f"{q['id']}{sufixo}.mp4", Path(tmp), a.estilo, num, len(quizzes), a.audios, not a.sem_narracao)
         print(f"{q['id']}: {dur:.1f}s")
 
 
