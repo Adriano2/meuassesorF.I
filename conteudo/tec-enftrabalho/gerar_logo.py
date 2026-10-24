@@ -44,7 +44,7 @@ def horizontal(fundo: tuple[int, int, int], fontes: Path) -> Image.Image:
     d.text((x, y), "tec.enf", font=fb, fill=cor)
     d.text((x + d.textlength("tec.enf", font=fb), y), "trabalho", font=fl, fill=(169, 182, 202) if escuro else NEVOA)
     lx = 724
-    for txt, c in [("ENFERMAGEM", AZUL), ("SEGURANÇA", VERDE), ("BOMBEIRO", VERMELHO)]:
+    for txt, c in [("ENFERMAGEM", AZUL), ("SEGURANÇA", VERDE), ("BOMBEIRO CIVIL", VERMELHO)]:
         d.rectangle([lx, 470, lx + 22, 492], fill=c)
         d.text((lx + 38, 446), txt, font=ft, fill=cor)
         lx += 38 + d.textlength(txt, font=ft) + 52

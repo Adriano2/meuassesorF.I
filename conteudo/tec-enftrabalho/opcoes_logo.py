@@ -91,42 +91,7 @@ def texto_em_arco(img: Image.Image, txt: str, f, cx: float, cy: float, r: float,
 
 
 def opcao_selo(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.Image:
-    """C · Selo circular de bombeiro civil, com a cruz ao centro.
-
-    fundo=None gera PNG transparente. O anel externo é branco; o aro interno e a cruz são vermelhos (bombeiro civil).
-    """
-    img = Image.new("RGBA", (S, S), (fundo or (0, 0, 0)) + ((255,) if fundo else (0,)))
-    d = ImageDraw.Draw(img)
-    cx = cy = S / 2
-    R = S * .44
-    aro = S * .03  # anel branco externo
-    fio = S * .007  # fio azul-marinho: dá borda ao selo sobre fundo branco e some sobre o escuro
-    d.ellipse([cx - R - aro - fio, cy - R - aro - fio, cx + R + aro + fio, cy + R + aro + fio], fill=TINTA)
-    d.ellipse([cx - R - aro, cy - R - aro, cx + R + aro, cy + R + aro], fill=BRANCO)
-    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=BRANCO)  # faixa branca
-    ri = R * .66
-    d.ellipse([cx - ri - S * .02, cy - ri - S * .02, cx + ri + S * .02, cy + ri + S * .02], fill=VERMELHO)  # aro interno vermelho
-    d.ellipse([cx - ri, cy - ri, cx + ri, cy + ri], fill=VERDE)  # verde: segurança
-    u = ri * .34
-    b = u * .14  # contorno branco para a cruz vermelha não vibrar contra o verde
-    d.rounded_rectangle([cx - u / 2 - b, cy - u * 1.5 - b, cx + u / 2 + b, cy + u * 1.5 + b], radius=u * .2, fill=BRANCO)
-    d.rounded_rectangle([cx - u * 1.5 - b, cy - u / 2 - b, cx + u * 1.5 + b, cy + u / 2 + b], radius=u * .2, fill=BRANCO)
-    # cruz vermelha: escolha do titular do perfil, ciente de que é emblema protegido (Lei 2.380/1910)
-    d.rounded_rectangle([cx - u / 2, cy - u * 1.5, cx + u / 2, cy + u * 1.5], radius=u * .15, fill=VERMELHO)
-    d.rounded_rectangle([cx - u * 1.5, cy - u / 2, cx + u * 1.5, cy + u / 2], radius=u * .15, fill=VERMELHO)
-    f = fonte(fd, "BarlowCondensed_800ExtraBold", int(S * .062))
-    rt = (R + ri) / 2
-    texto_em_arco(img, "TEC.ENF TRABALHO", f, cx, cy, rt, math.radians(200), math.radians(340), TINTA)
-    f2 = fonte(fd, "BarlowCondensed_700Bold", int(S * .046))
-    texto_em_arco(img, "SAÚDE · SEGURANÇA · BOMBEIRO CIVIL", f2, cx, cy, rt - S * .012, math.radians(20), math.radians(160), AZUL, por_baixo=True)
-    for ang in (180, 0):  # estrelas-ponto separadoras
-        x, y = cx + rt * math.cos(math.radians(ang)), cy + rt * math.sin(math.radians(ang))
-        d.ellipse([x - S * .012, y - S * .012, x + S * .012, y + S * .012], fill=TINTA)
-    return img
-
-
-def opcao_selo_print(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.Image:
-    """Selo do print aprovado: faixa azul-marinho, anel branco, cruz branca no verde e textos como no original.
+    """Selo aprovado (versão do print): faixa azul-marinho, anel branco, cruz branca no verde e textos como no original.
 
     Única mudança em relação ao original: o aro em volta do verde é vermelho (era amarelo).
     """
@@ -176,7 +141,7 @@ def opcao_monograma(fd: Path) -> Image.Image:
 OPCOES = [
     ("A", "Escudo + cruz + batimento", opcao_escudo),
     ("B", "Capacete + batimento", opcao_capacete),
-    ("C", "Selo de brigada", opcao_selo),  # escolhido em 24/10/2026
+    ("C", "Selo de bombeiro civil", opcao_selo),  # escolhido em 24/10/2026
     ("D", "Monograma te+", opcao_monograma),
 ]
 
