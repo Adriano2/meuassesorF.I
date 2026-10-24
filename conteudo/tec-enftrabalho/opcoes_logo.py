@@ -125,6 +125,34 @@ def opcao_selo(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.I
     return img
 
 
+def opcao_selo_print(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.Image:
+    """Selo do print aprovado: faixa azul-marinho, anel branco, cruz branca no verde e textos como no original.
+
+    Única mudança em relação ao original: o aro em volta do verde é vermelho (era amarelo).
+    """
+    img = Image.new("RGBA", (S, S), (fundo or (0, 0, 0)) + ((255,) if fundo else (0,)))
+    d = ImageDraw.Draw(img)
+    cx = cy = S / 2
+    R = S * .44
+    d.ellipse([cx - R - S * .022, cy - R - S * .022, cx + R + S * .022, cy + R + S * .022], fill=BRANCO)
+    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=TINTA)
+    ri = R * .66
+    d.ellipse([cx - ri - S * .012, cy - ri - S * .012, cx + ri + S * .012, cy + ri + S * .012], fill=VERMELHO)
+    d.ellipse([cx - ri, cy - ri, cx + ri, cy + ri], fill=VERDE)
+    u = ri * .34
+    d.rounded_rectangle([cx - u / 2, cy - u * 1.5, cx + u / 2, cy + u * 1.5], radius=u * .15, fill=BRANCO)
+    d.rounded_rectangle([cx - u * 1.5, cy - u / 2, cx + u * 1.5, cy + u / 2], radius=u * .15, fill=BRANCO)
+    f = fonte(fd, "BarlowCondensed_800ExtraBold", int(S * .062))
+    rt = (R + ri) / 2
+    texto_em_arco(img, "TEC.ENF TRABALHO", f, cx, cy, rt, math.radians(200), math.radians(340), BRANCO)
+    f2 = fonte(fd, "BarlowCondensed_700Bold", int(S * .046))
+    texto_em_arco(img, "SAÚDE · SEGURANÇA · BOMBEIRO CIVIL", f2, cx, cy, rt - S * .012, math.radians(20), math.radians(160), AMARELO, por_baixo=True)
+    for ang in (180, 0):
+        x, y = cx + rt * math.cos(math.radians(ang)), cy + rt * math.sin(math.radians(ang))
+        d.ellipse([x - S * .012, y - S * .012, x + S * .012, y + S * .012], fill=AMARELO)
+    return img
+
+
 def opcao_monograma(fd: Path) -> Image.Image:
     """D · Monograma "te" com a cruz no lugar do pingo, sobre tinta."""
     img = Image.new("RGB", (S, S), TINTA)
