@@ -93,14 +93,16 @@ def texto_em_arco(img: Image.Image, txt: str, f, cx: float, cy: float, r: float,
 def opcao_selo(fd: Path, fundo: tuple[int, int, int] | None = BRANCO) -> Image.Image:
     """C · Selo circular de bombeiro civil, com a cruz ao centro.
 
-    fundo=None gera PNG transparente. O anel vermelho externo representa o bombeiro civil.
+    fundo=None gera PNG transparente. O anel externo é branco; o aro interno e a cruz são vermelhos (bombeiro civil).
     """
     img = Image.new("RGBA", (S, S), (fundo or (0, 0, 0)) + ((255,) if fundo else (0,)))
     d = ImageDraw.Draw(img)
     cx = cy = S / 2
     R = S * .44
-    aro = S * .03  # anel vermelho externo: bombeiro civil
-    d.ellipse([cx - R - aro, cy - R - aro, cx + R + aro, cy + R + aro], fill=VERMELHO)
+    aro = S * .03  # anel branco externo
+    fio = S * .007  # fio azul-marinho: dá borda ao selo sobre fundo branco e some sobre o escuro
+    d.ellipse([cx - R - aro - fio, cy - R - aro - fio, cx + R + aro + fio, cy + R + aro + fio], fill=TINTA)
+    d.ellipse([cx - R - aro, cy - R - aro, cx + R + aro, cy + R + aro], fill=BRANCO)
     d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=BRANCO)  # faixa branca
     ri = R * .66
     d.ellipse([cx - ri - S * .02, cy - ri - S * .02, cx + ri + S * .02, cy + ri + S * .02], fill=VERMELHO)  # aro interno vermelho
