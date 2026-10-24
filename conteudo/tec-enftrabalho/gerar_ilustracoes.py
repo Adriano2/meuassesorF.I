@@ -53,7 +53,7 @@ def gerar_imagem(cena: str, refs: list[Path], destino: Path) -> None:
         raise SystemExit("Defina GEMINI_API_KEY (chave do Google AI Studio).")
     modelo = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
     corpo = {
-        "contents": [{"parts": [_parte_imagem(r) for r in refs] + [{"text": f"Image 1 is the photo reference of the protagonist. Images 2 and 3 are the style references.\n{ESTILO}\n\nScene: {cena}"}]}],
+        "contents": [{"parts": [_parte_imagem(r) for r in refs] + [{"text": f"Image 1 is the photo reference of the protagonist. All the other images are approved artworks of the same series: copy their style and their version of the protagonist, but ignore any text in them.\n{ESTILO}\n\nScene: {cena}"}]}],
         "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "4:5"}},
     }
     req = urllib.request.Request(
@@ -87,7 +87,9 @@ def main() -> None:
     ap.add_argument("--slide", type=int, help="gera só este slide (1, 2, ...)")
     a = ap.parse_args()
     refs = [a.refs / "ref-foto.jpg", a.refs / "ref-estilo-rosto.png", a.refs / "ref-estilo.png"]
+    extras = sorted(a.refs.glob("ref-extra-*"))[:2]  # outras artes aprovadas da série (mais referência de rosto e traço)
     falta = [r.name for r in refs if not r.exists()]
+    refs += extras
     if falta:
         raise SystemExit(f"Faltam as referências em {a.refs}: {', '.join(falta)}")
     for c in json.loads((AQUI / "carrosseis_ilustrados.json").read_text(encoding="utf-8")):

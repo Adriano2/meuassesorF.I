@@ -130,6 +130,10 @@ def glifo(nome: str, s: int, cor) -> Image.Image:
     elif nome == "folha":
         d.polygon([(S * .2, S * .8), (S * .24, S * .36), (S * .5, S * .12), (S * .84, S * .14), (S * .8, S * .5), (S * .56, S * .82)], outline=cor, width=w)
         d.line([(S * .2, S * .82), (S * .62, S * .38)], fill=cor, width=w)
+    elif nome == "pessoas_glifo":
+        for cx in (S * .34, S * .66):
+            d.ellipse([cx - S * .1, S * .16, cx + S * .1, S * .36], outline=cor, width=w)
+            d.arc([cx - S * .2, S * .46, cx + S * .2, S * .94], 180, 360, fill=cor, width=w)
     elif nome == "prancheta":
         d.rounded_rectangle([S * .2, S * .14, S * .8, S * .92], radius=S * .06, outline=cor, width=w)
         d.rounded_rectangle([S * .36, S * .06, S * .64, S * .22], radius=S * .04, fill=cor)
@@ -269,6 +273,8 @@ def montar(c: dict, s: dict, n: int, total: int, f: Fontes, caminho_arte: Path, 
         c_, d = camada()
         y = 150
         for ln, tam in zip(s["titulo"], s["tamanhos"]):
+            while tam > 60 and d.textlength(ln, font=f.get(IT, tam)) > W - 110:  # título longo não passa da borda
+                tam -= 4
             ft = f.get(IT, tam)
             sombra_texto(d, (50, y), ln, ft)
             y += int(tam * .98)
@@ -278,7 +284,10 @@ def montar(c: dict, s: dict, n: int, total: int, f: Fontes, caminho_arte: Path, 
         cabecalho(img, f, f"{n} / {total}")
     elif s["tipo"] == "final":
         c_, d = camada()
-        ft = f.get(IT, 88)
+        tam_f = 88
+        while tam_f > 56 and max(ImageDraw.Draw(img).textlength(ln, font=f.get(IT, tam_f)) for ln in s["frase"]) > 520:
+            tam_f -= 4  # frase longa não passa da borda
+        ft = f.get(IT, tam_f)
         txt = Image.new("RGBA", (560, 260), (0, 0, 0, 0))
         dt = ImageDraw.Draw(txt)
         for i, ln in enumerate(s["frase"]):

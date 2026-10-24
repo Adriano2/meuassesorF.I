@@ -1,5 +1,499 @@
 [
   {
+    "id": "pcr-trabalho",
+    "pilar": "enfermagem",
+    "titulo": "Parada cardiorrespiratória no trabalho",
+    "legenda": "Um colega cai no almoxarifado e não responde. Você saberia reconhecer uma parada cardiorrespiratória? ❤️\n\nNesta história: como reconhecer a PCR, pedir ajuda, fazer compressões de qualidade e usar o DEA até o SAMU chegar.\n\nRespiração ofegante e irregular (gasping) não é respiração normal: é sinal de PCR.\n\nEmergência: SAMU 192.\n\nSalve e compartilhe com a brigada da sua empresa.\n\n#tecenftrabalho #rcp #primeirossocorros #enfermagemdotrabalho #brigadadeemergencia",
+    "fonte": "Diretrizes da American Heart Association para RCP e atendimento cardiovascular de emergência; ABNT NBR 14276 (brigada).",
+    "slides": [
+      {
+        "tipo": "capa",
+        "foco": [
+          0.7,
+          0.4
+        ],
+        "escurecer": "esquerda",
+        "cena": "Close-up portrait of the protagonist from the chest up in her white nursing uniform with stethoscope, determined and focused expression looking at the camera, holding the handle of a bright automated external defibrillator case (plain, no text). Warehouse with metal shelving softly out of focus, navy and yellow tones. The woman fills the right 60 percent of the frame; the left 40 percent and the top are darker uncluttered background for a title.",
+        "titulo": [
+          "Parada",
+          "cardiorrespiratória",
+          "no trabalho"
+        ],
+        "tamanhos": [
+          150,
+          118,
+          92
+        ],
+        "pincel": [
+          "Reconhecer rápido",
+          "salva vidas!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Prevenção"
+          ],
+          [
+            "coracao",
+            "Saúde"
+          ],
+          [
+            "pessoas_glifo",
+            "Brigada"
+          ]
+        ]
+      },
+      {
+        "tipo": "cena",
+        "numero": 1,
+        "titulo": "O que aconteceu?",
+        "foco": [
+          0.5,
+          0.6
+        ],
+        "escurecer": "topo",
+        "cena": "Wide scene in a company warehouse with tall metal shelving and cardboard boxes: a middle-aged male worker in navy work clothes lies unconscious on his back on the floor, a coworker kneels beside him looking scared, and the protagonist in white uniform runs toward them. Leave the upper right area empty for a speech bubble.",
+        "balao": {
+          "texto": "Um colaborador desmaiou no almoxarifado. Ele não responde e não está respirando normalmente.",
+          "x": 560,
+          "y": 120,
+          "w": 480,
+          "cauda": [
+            470,
+            400
+          ]
+        },
+        "pincel": {
+          "linhas": [
+            "Cada minuto",
+            "conta!"
+          ],
+          "x": 640,
+          "y": 440
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 2,
+        "titulo": "Avaliação inicial",
+        "foco": [
+          0.65,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot: the protagonist kneels beside the unconscious worker lying on his back, tapping his shoulders firmly and calling him, while looking at his chest to check breathing; she points with the other hand at a coworker as if giving an order. She is on the right half of the frame; the left side is darker warehouse background for a card.",
+        "cartao_check": {
+          "titulo": "Verifique:",
+          "itens": [
+            "Cena segura",
+            "Responde ao chamado?",
+            "Respira normalmente?",
+            "Peça ajuda e o DEA"
+          ],
+          "x": 36,
+          "y": 360,
+          "w": 470
+        },
+        "balao": {
+          "texto": "Ele não respira normalmente! Liguem para o SAMU 192 e tragam o DEA!",
+          "x": 600,
+          "y": 300,
+          "w": 440,
+          "cauda": [
+            720,
+            500
+          ]
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 3,
+        "titulo": "Compressões de qualidade",
+        "foco": [
+          0.4,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Dynamic medium shot from the side: the protagonist kneels beside the worker lying on his back on the warehouse floor and performs chest compressions with straight locked arms and both hands stacked on the center of his chest, shoulders above her hands, intense focus. The scene occupies the left 60 percent of the frame; the right side is darker blurred background for an information card.",
+        "balao": {
+          "texto": "Vou comprimir forte e rápido até o DEA chegar.",
+          "x": 36,
+          "y": 880,
+          "w": 440,
+          "cauda": [
+            260,
+            1030
+          ]
+        },
+        "cartao_icones": {
+          "itens": [
+            [
+              "check",
+              "Mãos no centro do peito, braços esticados"
+            ],
+            [
+              "elevar",
+              "100 a 120 compressões por minuto"
+            ],
+            [
+              "alerta",
+              "Afunde 5 a 6 cm e deixe o tórax voltar"
+            ],
+            [
+              "pessoas",
+              "Troque de socorrista a cada 2 minutos"
+            ]
+          ],
+          "x": 600,
+          "y": 240,
+          "w": 440
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 4,
+        "titulo": "O DEA chegou",
+        "foco": [
+          0.45,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot: an open automated external defibrillator (plain, no text) on the floor beside the unconscious worker, two adhesive pads placed on his bare chest (one below the right collarbone, one on the left side below the armpit), the protagonist kneeling with one hand raised, palm open, signaling everyone to stand clear. Coworkers stand back. The protagonist is on the left with empty space above her for a speech bubble.",
+        "balao": {
+          "texto": "Liguem o DEA e sigam as instruções de voz. Ninguém toca na vítima durante a análise e o choque!",
+          "x": 300,
+          "y": 230,
+          "w": 500,
+          "cauda": [
+            200,
+            580
+          ]
+        },
+        "barra": {
+          "icone": "coracao",
+          "texto": "Depois do choque, retome as compressões na hora, até o SAMU assumir."
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 5,
+        "titulo": "Lembre-se!",
+        "foco": [
+          0.5,
+          0.5
+        ],
+        "escurecer": "geral",
+        "cena": "Empty company warehouse softly blurred, metal shelving, a wall-mounted automated external defibrillator cabinet in green (plain, no text) clearly visible, cool navy tones, no people, no text, no signs.",
+        "cartao_icones": {
+          "itens": [
+            [
+              "alerta",
+              "Respiração ofegante (gasping) não é respiração normal."
+            ],
+            [
+              "check",
+              "DEA acessível e sinalizado salva vidas."
+            ],
+            [
+              "pessoas",
+              "Treine a brigada em RCP e DEA."
+            ]
+          ],
+          "x": 60,
+          "y": 250,
+          "w": 960,
+          "grande": true
+        },
+        "pincel": {
+          "linhas": [
+            "Mais preparo,",
+            "mais vidas salvas!"
+          ],
+          "x": 200,
+          "y": 1000
+        },
+        "rodape_texto": "Emergência: SAMU 192 · Bombeiros 193"
+      },
+      {
+        "tipo": "final",
+        "foco": [
+          0.35,
+          0.4
+        ],
+        "cena": "Portrait of the protagonist from the chest up, in white nursing uniform with stethoscope, one hand resting over her heart, a warm confident look toward the camera. Solid dark navy blue background with a very subtle texture, the woman on the left 55 percent of the frame, empty space on the right.",
+        "frase": [
+          "Seu gesto pode",
+          "salvar uma vida!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Segurança"
+          ],
+          [
+            "coracao",
+            "Saúde"
+          ],
+          [
+            "folha",
+            "Qualidade de vida"
+          ],
+          [
+            "capacete",
+            "Trabalho seguro"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "acidente-quimico",
+    "pilar": "seguranca",
+    "titulo": "Acidente com produto químico no ambiente de trabalho",
+    "legenda": "Um galão vaza, o produto atinge a pele e os olhos do trabalhador. O que fazer? ⚠️\n\nNesta história: isolar a área, usar EPI antes de se aproximar, identificar o produto pela FDS, lavar com água corrente e encaminhar ao atendimento levando a ficha do produto.\n\nNunca tente neutralizar o produto na pele ou nos olhos.\n\nSalve e compartilhe com quem manuseia produtos químicos.\n\n#tecenftrabalho #produtosquimicos #segurancadotrabalho #nr26 #saudeocupacional",
+    "fonte": "NR-26 e ABNT NBR 14725 (rotulagem e FDS); NR-6 (EPI); NR-1 (PGR); seção de primeiros socorros da FDS do produto.",
+    "slides": [
+      {
+        "tipo": "capa",
+        "foco": [
+          0.7,
+          0.4
+        ],
+        "escurecer": "esquerda",
+        "cena": "Close-up portrait of the protagonist from the chest up in her white nursing uniform with stethoscope, serious attentive expression looking at the camera. Industrial chemical storage area out of focus behind her, with blue drums and yellow racks, navy and yellow tones. The woman fills the right 60 percent of the frame; the left 40 percent and the top are darker uncluttered background for a title.",
+        "titulo": [
+          "Acidente com",
+          "produto químico",
+          "no trabalho"
+        ],
+        "tamanhos": [
+          128,
+          128,
+          92
+        ],
+        "pincel": [
+          "Conheça os riscos",
+          "e saiba como agir!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Prevenção"
+          ],
+          [
+            "coracao",
+            "Saúde"
+          ],
+          [
+            "folha",
+            "Meio ambiente"
+          ]
+        ]
+      },
+      {
+        "tipo": "cena",
+        "numero": 1,
+        "titulo": "O que aconteceu?",
+        "foco": [
+          0.5,
+          0.6
+        ],
+        "escurecer": "topo",
+        "cena": "Wide scene in an industrial chemical storage area with yellow racks: a blue drum lies on its side leaking a yellow-green liquid across the floor, a male worker in navy overalls with reflective stripes and a white hard hat covers his eyes with a gloved hand in discomfort, the protagonist in white uniform and blue gloves crouches at a safe distance assessing the scene. A yellow hazard sign with only a warning triangle pictogram (no words). Leave the upper middle area empty for a speech bubble.",
+        "balao": {
+          "texto": "Durante o manuseio de um produto químico, um galão vazou. O trabalhador teve contato com o produto e sente irritação na pele e nos olhos.",
+          "x": 540,
+          "y": 120,
+          "w": 500,
+          "cauda": [
+            460,
+            440
+          ]
+        },
+        "pincel": {
+          "linhas": [
+            "Aja com calma",
+            "e segurança!"
+          ],
+          "x": 600,
+          "y": 520
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 2,
+        "titulo": "Avaliação inicial",
+        "foco": [
+          0.65,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot: the protagonist, now wearing safety goggles and chemical-resistant gloves, holds a container label up to read it (blank label, no text) while gesturing other workers to keep away; yellow-black barrier tape in front of the spill. She is on the right half of the frame; the left side is darker industrial background for a card.",
+        "cartao_check": {
+          "titulo": "Antes de ajudar:",
+          "itens": [
+            "Isole a área",
+            "Use EPI adequado",
+            "Identifique o produto",
+            "Consulte a FDS"
+          ],
+          "x": 36,
+          "y": 360,
+          "w": 470
+        },
+        "balao": {
+          "texto": "Ninguém se aproxima sem EPI. Qual produto estava no galão?",
+          "x": 600,
+          "y": 300,
+          "w": 430,
+          "cauda": [
+            760,
+            500
+          ]
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 3,
+        "titulo": "Primeiros cuidados",
+        "foco": [
+          0.4,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot at a green emergency eyewash station (plain, no text): the worker without his hard hat leans over it with water flowing into his open eyes, while the protagonist in goggles and gloves holds his shoulder and helps keep his eyelids open. The scene occupies the left 60 percent of the frame; the right side is darker blurred background for an information card.",
+        "balao": {
+          "texto": "Mantenha os olhos abertos sob a água. Vamos lavar sem pressa.",
+          "x": 36,
+          "y": 880,
+          "w": 440,
+          "cauda": [
+            260,
+            1030
+          ]
+        },
+        "cartao_icones": {
+          "itens": [
+            [
+              "check",
+              "Retire roupas e acessórios contaminados"
+            ],
+            [
+              "gelo",
+              "Lave pele e olhos com água corrente por pelo menos 15 minutos, ou conforme a FDS"
+            ],
+            [
+              "proibido",
+              "Não use nada para neutralizar o produto"
+            ],
+            [
+              "alerta",
+              "Use lava-olhos e chuveiro de emergência"
+            ]
+          ],
+          "x": 600,
+          "y": 240,
+          "w": 440
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 4,
+        "titulo": "E depois?",
+        "foco": [
+          0.45,
+          0.5
+        ],
+        "escurecer": "topo",
+        "cena": "Medium shot: the protagonist hands a printed safety data sheet (blank paper, no text) to a paramedic in a navy uniform next to an ambulance stretcher where the worker sits with a towel over his shoulders. The protagonist is on the left with empty space above her for a speech bubble.",
+        "balao": {
+          "texto": "Ele será avaliado no serviço de saúde. Levamos a FDS do produto para orientar o atendimento.",
+          "x": 300,
+          "y": 230,
+          "w": 500,
+          "cauda": [
+            200,
+            580
+          ]
+        },
+        "barra": {
+          "icone": "prancheta",
+          "texto": "Registre o acidente, emita a CAT e revise os riscos químicos no PGR."
+        }
+      },
+      {
+        "tipo": "cena",
+        "numero": 5,
+        "titulo": "Lembre-se!",
+        "foco": [
+          0.5,
+          0.5
+        ],
+        "escurecer": "geral",
+        "cena": "Empty, clean chemical storage area softly blurred, organized drums on spill containment pallets, an emergency shower and eyewash station in the background, cool navy tones, no people, no text, no signs.",
+        "cartao_icones": {
+          "itens": [
+            [
+              "alerta",
+              "Leia o rótulo e a FDS antes de manusear."
+            ],
+            [
+              "check",
+              "Use o EPI indicado para cada produto."
+            ],
+            [
+              "pessoas",
+              "Vazamento? Isole a área e acione a equipe treinada."
+            ]
+          ],
+          "x": 60,
+          "y": 250,
+          "w": 960,
+          "grande": true
+        },
+        "pincel": {
+          "linhas": [
+            "Informação também",
+            "é proteção!"
+          ],
+          "x": 200,
+          "y": 1000
+        },
+        "rodape_texto": "Emergência: SAMU 192 · Bombeiros 193"
+      },
+      {
+        "tipo": "final",
+        "foco": [
+          0.35,
+          0.4
+        ],
+        "cena": "Portrait of the protagonist from the chest up, in white nursing uniform with stethoscope, holding safety goggles in one hand, a gentle confident look toward the camera. Solid dark navy blue background with a very subtle texture, the woman on the left 55 percent of the frame, empty space on the right.",
+        "frase": [
+          "Prevenir é",
+          "proteger vidas!"
+        ],
+        "barra_icones": [
+          [
+            "escudo",
+            "Segurança"
+          ],
+          [
+            "coracao",
+            "Saúde"
+          ],
+          [
+            "folha",
+            "Qualidade de vida"
+          ],
+          [
+            "capacete",
+            "Trabalho seguro"
+          ]
+        ]
+      }
+    ]
+  },
+  {
     "id": "acidente-agulha",
     "pilar": "enfermagem",
     "titulo": "Acidente com agulha no trabalho",
@@ -92,13 +586,13 @@
           ],
           "x": 36,
           "y": 360,
-          "w": 430
+          "w": 470
         },
         "balao": {
           "texto": "Calma. Vamos lavar o local e seguir o protocolo de acidente com material biológico.",
-          "x": 560,
+          "x": 600,
           "y": 300,
-          "w": 470,
+          "w": 440,
           "cauda": [
             700,
             520
@@ -141,7 +635,7 @@
             ]
           ],
           "x": 600,
-          "y": 200,
+          "y": 240,
           "w": 440
         }
       },
@@ -335,7 +829,7 @@
           ],
           "x": 36,
           "y": 360,
-          "w": 430
+          "w": 470
         },
         "balao": {
           "texto": "Alarme acionado! Afastem-se do painel.",
@@ -388,7 +882,7 @@
             ]
           ],
           "x": 600,
-          "y": 190,
+          "y": 240,
           "w": 440
         }
       },
@@ -582,13 +1076,13 @@
           ],
           "x": 36,
           "y": 360,
-          "w": 430
+          "w": 470
         },
         "balao": {
           "texto": "Mantenha a calma. Vou avaliar a gravidade da lesão e prestar os primeiros cuidados.",
-          "x": 560,
+          "x": 600,
           "y": 330,
-          "w": 470,
+          "w": 440,
           "cauda": [
             640,
             520
@@ -635,7 +1129,7 @@
             ]
           ],
           "x": 600,
-          "y": 180,
+          "y": 240,
           "w": 440
         }
       },

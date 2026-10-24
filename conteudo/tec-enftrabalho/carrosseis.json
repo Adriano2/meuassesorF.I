@@ -408,5 +408,105 @@
     "linha2": "ENFERMAGEM DO TRABALHO",
     "icone": "kit",
     "slogan": "Cuidar também é prevenir!"
+  },
+  {
+    "id": "pcr",
+    "pilar": "bombeiro",
+    "ref": "Diretrizes AHA",
+    "titulo": "Parada cardiorrespiratória: como agir",
+    "sub": "Como reconhecer e agir até o SAMU chegar",
+    "slides": [
+      {
+        "t": "Como reconhecer",
+        "i": [
+          "Não responde quando você chama e toca nos ombros",
+          "Não respira, ou só tem respiração ofegante (gasping)",
+          "Peça ajuda: SAMU 192 e o DEA"
+        ]
+      },
+      {
+        "t": "Compressões",
+        "i": [
+          "Mãos no centro do peito, braços esticados",
+          "100 a 120 compressões por minuto",
+          "Afunde 5 a 6 cm e deixe o tórax voltar",
+          "Troque de socorrista a cada 2 minutos"
+        ]
+      },
+      {
+        "t": "Uso do DEA",
+        "i": [
+          "Ligue e siga as instruções de voz",
+          "Cole as pás no peito sem roupa",
+          "Ninguém toca na vítima na análise e no choque",
+          "Retome as compressões logo após o choque"
+        ]
+      },
+      {
+        "t": "Não faça",
+        "alerta": true,
+        "i": [
+          "Parar as compressões sem necessidade",
+          "Esperar para ver se a pessoa melhora antes de pedir ajuda",
+          "Confundir gasping com respiração normal"
+        ]
+      }
+    ],
+    "fonte": "Diretrizes da American Heart Association para RCP e atendimento cardiovascular de emergência.",
+    "legenda": "Você saberia reconhecer uma parada cardiorrespiratória? ❤️\n\nQuando a pessoa não responde e não respira normalmente, cada minuto sem compressão diminui a chance de sobreviver. Respiração ofegante e irregular (gasping) não é respiração normal: é sinal de PCR.\n\nArraste para ver:\n→ como reconhecer a PCR\n→ como fazer compressões de qualidade\n→ como usar o DEA\n→ o que não fazer\n\nEmergência: SAMU 192 · Bombeiros 193.\n\nSalve e compartilhe com a brigada da sua empresa. Você já fez treinamento de RCP? Conta aqui.",
+    "tags": "#tecenftrabalho #rcp #primeirossocorros #brigadadeemergencia #enfermagemdotrabalho",
+    "linha1": "PARADA",
+    "linha2": "CARDIORRESPIRATÓRIA",
+    "icone": "kit",
+    "slogan": "Seu gesto pode salvar uma vida!"
+  },
+  {
+    "id": "quimico",
+    "pilar": "seguranca",
+    "ref": "NR-26 · FDS",
+    "titulo": "Acidente com produto químico",
+    "sub": "Isolar, proteger, lavar e encaminhar",
+    "slides": [
+      {
+        "t": "Antes de ajudar",
+        "i": [
+          "Isole a área e afaste curiosos",
+          "Use o EPI adequado antes de se aproximar",
+          "Identifique o produto pelo rótulo e pela FDS"
+        ]
+      },
+      {
+        "t": "Primeiros cuidados",
+        "i": [
+          "Retire roupas e acessórios contaminados",
+          "Lave pele e olhos com água corrente por pelo menos 15 minutos, ou conforme a FDS",
+          "Use o lava-olhos e o chuveiro de emergência"
+        ]
+      },
+      {
+        "t": "Não faça",
+        "alerta": true,
+        "i": [
+          "Tentar neutralizar o produto na pele ou nos olhos",
+          "Se aproximar sem EPI",
+          "Limpar o vazamento sem treinamento"
+        ]
+      },
+      {
+        "t": "Depois do atendimento",
+        "i": [
+          "Encaminhe ao serviço de saúde levando a FDS",
+          "Registre o acidente e emita a CAT",
+          "Revise os riscos químicos no PGR"
+        ]
+      }
+    ],
+    "fonte": "NR-26 e ABNT NBR 14725 (rotulagem e FDS); NR-6 (EPI); NR-1 (PGR).",
+    "legenda": "Um galão vaza e o produto atinge a pele e os olhos do trabalhador. O que fazer? ⚠️\n\nEm acidente com produto químico, a ordem importa: proteger quem ajuda, interromper o contato e lavar bem, sem tentar neutralizar.\n\nArraste para ver:\n→ o que fazer antes de ajudar\n→ os primeiros cuidados\n→ o que não fazer\n→ o que fazer depois do atendimento\n\nA FDS (Ficha com Dados de Segurança) traz os primeiros socorros de cada produto. Ela precisa estar acessível.\n\nSalve e compartilhe com quem manuseia produtos químicos.",
+    "tags": "#tecenftrabalho #produtosquimicos #segurancadotrabalho #nr26 #saudeocupacional",
+    "linha1": "ACIDENTE COM",
+    "linha2": "PRODUTO QUÍMICO",
+    "icone": "escudo",
+    "slogan": "Informação também é proteção!"
   }
 ]
