@@ -41,3 +41,15 @@ python3 gerar_quiz.py --fontes ./fontes --saida ./videos --estilo tema --voz goo
 ```
 
 Cada trecho fica em cache (`~/.cache/tec-enftrabalho-tts`), então refazer um vídeo não gera nova cobrança.
+
+## Voz gravada pelo titular do perfil
+
+`roteiro-gravacao.md` traz os 4 trechos de cada quiz em linguagem falada. Grave cada trecho em um arquivo
+e nomeie `{id}-{n}.m4a` (1 pergunta, 2 alternativas, 3 resposta, 4 fechamento). Aceita m4a, mp3, wav, aac, ogg e 3gp.
+
+```bash
+python3 gerar_quiz.py --fontes ./fontes --saida ./videos --estilo tema --audios ./gravacoes
+```
+
+O gerador corta o silêncio das pontas, nivela o volume (-16 LUFS) e ajusta a duração do vídeo ao áudio.
+Se faltar algum arquivo, ele lista os nomes e não gera nada.

@@ -105,6 +105,22 @@ def falar_google(texto: str, nome: str, destino: Path) -> None:
     destino.write_bytes(arq.read_bytes())
 
 
+def carregar_gravacao(arq: Path, tmp: Path) -> np.ndarray:
+    """Voz gravada pelo titular do perfil: corta o silêncio das pontas e nivela o volume (-16 LUFS)."""
+    saida = tmp / (arq.stem + ".wav")
+    corta = "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.08"
+    subprocess.run(
+        ["ffmpeg", "-loglevel", "error", "-y", "-i", str(arq), "-ac", "1", "-ar", str(SR), "-af",
+         f"highpass=f=70,{corta},areverse,{corta},areverse,loudnorm=I=-16:TP=-1.5:LRA=9", str(saida)],
+        check=True,
+    )
+    with wave.open(str(saida)) as w:
+        dados = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768
+    if len(dados) < SR // 4:
+        raise SystemExit(f"{arq.name}: gravação vazia ou muito curta.")
+    return dados * 0.95
+
+
 def falar(texto: str, voz: str, destino: Path) -> np.ndarray:
     if voz.startswith("google:"):
         falar_google(texto, voz.split(":", 1)[1], destino)
@@ -507,12 +523,17 @@ class CenaTema:
 
 
 
-def gerar(q: dict, fontes: Fontes, voz: str, saida: Path, tmp: Path, estilo: str = "classico", num: int = 1, total: int = 1) -> float:
+def gerar(q: dict, fontes: Fontes, voz: str, saida: Path, tmp: Path, estilo: str = "classico", num: int = 1, total: int = 1,
+          audios: Path | None = None) -> float:
     letra = LETRAS[q["correta"]]
-    v1 = falar(f"Quiz de cinco segundos! {q['fala_pergunta']}", voz, tmp / "v1.wav")
-    v2 = falar(". ".join(f"{LETRAS[i]}: {o}" for i, o in enumerate(q["fala_opcoes"])) + ".", voz, tmp / "v2.wav")
-    v3 = falar(f"Resposta certa: letra {letra}, {q['fala_opcoes'][q['correta']]}. {q['fala_explicacao']}", voz, tmp / "v3.wav")
-    v4 = falar("Acertou? Comenta aí e segue o perfil para mais quizzes.", voz, tmp / "v4.wav")
+    if audios:
+        gravados = [next(iter(sorted(audios.glob(f"{q['id']}-{n}.*"))), None) for n in range(1, 5)]
+        v1, v2, v3, v4 = (carregar_gravacao(arq, tmp) for arq in gravados)
+    else:
+        v1 = falar(f"Quiz de cinco segundos! {q['fala_pergunta']}", voz, tmp / "v1.wav")
+        v2 = falar(". ".join(f"{LETRAS[i]}: {o}" for i, o in enumerate(q["fala_opcoes"])) + ".", voz, tmp / "v2.wav")
+        v3 = falar(f"Resposta certa: letra {letra}, {q['fala_opcoes'][q['correta']]}. {q['fala_explicacao']}", voz, tmp / "v3.wav")
+        v4 = falar("Acertou? Comenta aí e segue o perfil para mais quizzes.", voz, tmp / "v4.wav")
     d = lambda s: len(s) / SR  # noqa: E731
     tl = {"v1": 0.3}
     tl["opcoes"] = tl["v1"] + d(v1) + 0.2
@@ -558,6 +579,7 @@ def main() -> None:
     ap.add_argument("--voz", default="mb-br3",
                     help="mb-br3 (sintetizador local) ou google:NOME, ex.: google:Vindemiatrix (voz Chirp 3 HD, precisa de GOOGLE_TTS_API_KEY)")
     ap.add_argument("--so", help="gera só o quiz com este id")
+    ap.add_argument("--audios", type=Path, help="pasta com as gravações da sua voz: {id}-1.m4a (pergunta), -2 (alternativas), -3 (resposta), -4 (fechamento)")
     ap.add_argument("--fundo", choices=["tinta", "branco"], default="tinta")
     ap.add_argument("--estilo", choices=["classico", "tema"], default="classico",
                     help="tema: ilustração no topo, cartão de pergunta e caixa verde de resposta (sempre fundo branco)")
@@ -568,11 +590,16 @@ def main() -> None:
     if a.fundo == "branco" and a.estilo == "classico":
         usar_fundo_branco()
     sufixo = "-tema" if a.estilo == "tema" else ("-branco" if a.fundo == "branco" else "")
+    if a.audios:
+        faltam = [f"{q['id']}-{n}" for q in quizzes if not a.so or q["id"] == a.so
+                  for n in range(1, 5) if not list(a.audios.glob(f"{q['id']}-{n}.*"))]
+        if faltam:
+            raise SystemExit("Faltam gravações (aceita .m4a, .mp3, .wav, .aac, .ogg, .3gp): " + ", ".join(faltam))
     for num, q in enumerate(quizzes, 1):
         if a.so and q["id"] != a.so:
             continue
         with tempfile.TemporaryDirectory() as tmp:
-            dur = gerar(q, fontes, a.voz, a.saida / f"{q['id']}{sufixo}.mp4", Path(tmp), a.estilo, num, len(quizzes))
+            dur = gerar(q, fontes, a.voz, a.saida / f"{q['id']}{sufixo}.mp4", Path(tmp), a.estilo, num, len(quizzes), a.audios)
         print(f"{q['id']}: {dur:.1f}s")
 
 
