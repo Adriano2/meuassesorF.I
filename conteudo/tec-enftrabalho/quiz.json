@@ -1,0 +1,68 @@
+[
+  {
+    "id": "q01-pgr-nr1",
+    "pilar": "seguranca",
+    "pergunta": "Qual NR trata do PGR, o Programa de Gerenciamento de Riscos?",
+    "fala_pergunta": "Qual N R trata do pê gê erre, o Programa de Gerenciamento de Riscos?",
+    "opcoes": ["NR-7", "NR-1", "NR-9", "NR-15"],
+    "fala_opcoes": ["ene erre sete", "ene erre um", "ene erre nove", "ene erre quinze"],
+    "correta": 1,
+    "explicacao": "O PGR faz parte do GRO, previsto na NR-1. A NR-7 trata do PCMSO.",
+    "fala_explicacao": "O pê gê erre faz parte do gerenciamento de riscos ocupacionais, previsto na ene erre um. A ene erre sete trata do pê cê eme ésse ó."
+  },
+  {
+    "id": "q02-admissional",
+    "pilar": "enfermagem",
+    "pergunta": "Qual exame ocupacional é feito antes de o trabalhador assumir a função?",
+    "fala_pergunta": "Qual exame ocupacional é feito antes de o trabalhador assumir a função?",
+    "opcoes": ["Periódico", "Demissional", "Admissional", "Retorno ao trabalho"],
+    "fala_opcoes": ["periódico", "demissional", "admissional", "retorno ao trabalho"],
+    "correta": 2,
+    "explicacao": "O admissional é feito antes do início das atividades, conforme a NR-7.",
+    "fala_explicacao": "O exame admissional é feito antes do início das atividades, conforme a ene erre sete."
+  },
+  {
+    "id": "q03-extintor-eletrico",
+    "pilar": "bombeiro",
+    "pergunta": "Qual agente extintor NÃO deve ser usado em equipamento elétrico energizado?",
+    "fala_pergunta": "Qual agente extintor não deve ser usado em equipamento elétrico energizado?",
+    "opcoes": ["CO₂", "Pó BC", "Pó ABC", "Água"],
+    "fala_opcoes": ["gás carbônico", "pó bê cê", "pó á bê cê", "água"],
+    "correta": 3,
+    "explicacao": "Água conduz eletricidade e expõe quem combate ao choque. Use CO₂ ou pó.",
+    "fala_explicacao": "A água conduz eletricidade e expõe quem está combatendo ao choque elétrico. Use gás carbônico ou pó."
+  },
+  {
+    "id": "q04-rcp-frequencia",
+    "pilar": "bombeiro",
+    "pergunta": "Na RCP em adulto, qual é a frequência de compressões por minuto?",
+    "fala_pergunta": "Na reanimação cardiopulmonar em adulto, qual é a frequência de compressões por minuto?",
+    "opcoes": ["60 a 80", "80 a 100", "100 a 120", "130 a 150"],
+    "fala_opcoes": ["sessenta a oitenta", "oitenta a cem", "cem a cento e vinte", "cento e trinta a cento e cinquenta"],
+    "correta": 2,
+    "explicacao": "Diretriz AHA: 100 a 120 por minuto, profundidade de 5 a 6 cm.",
+    "fala_explicacao": "Pela diretriz da A H A, são cem a cento e vinte compressões por minuto, com profundidade de cinco a seis centímetros."
+  },
+  {
+    "id": "q05-cor-incendio",
+    "pilar": "seguranca",
+    "pergunta": "Na sinalização de segurança, qual cor identifica equipamentos de combate a incêndio?",
+    "fala_pergunta": "Na sinalização de segurança, qual cor identifica os equipamentos de combate a incêndio?",
+    "opcoes": ["Verde", "Azul", "Vermelho", "Amarelo"],
+    "fala_opcoes": ["verde", "azul", "vermelho", "amarelo"],
+    "correta": 2,
+    "explicacao": "Vermelho, pela ABNT NBR 7195. Verde indica segurança e primeiros socorros.",
+    "fala_explicacao": "Vermelho, pela norma da á bê ene tê sete um nove cinco. O verde indica segurança e primeiros socorros."
+  },
+  {
+    "id": "q06-prontuario-20-anos",
+    "pilar": "enfermagem",
+    "pergunta": "Por quanto tempo, no mínimo, o prontuário ocupacional é guardado após o desligamento?",
+    "fala_pergunta": "Por quanto tempo, no mínimo, o prontuário ocupacional deve ser guardado após o desligamento?",
+    "opcoes": ["5 anos", "10 anos", "20 anos", "30 anos"],
+    "fala_opcoes": ["cinco anos", "dez anos", "vinte anos", "trinta anos"],
+    "correta": 2,
+    "explicacao": "A NR-7 exige guarda mínima de 20 anos após o desligamento.",
+    "fala_explicacao": "A ene erre sete exige guarda mínima de vinte anos após o desligamento do empregado."
+  }
+]
